@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Komunitas — BelajarYuk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-frontend.css">
+</head>
+<body>
+<div class="user-frontend" id="userFrontend">
+
+    <header class="user-navbar">
+        <div class="user-container user-navbar-inner">
+            <a class="user-brand" href="index.html"><span class="user-brand-badge">🎓</span> BelajarYuk</a>
+            <ul class="user-nav-menu">
+                <li><a href="index.html" data-nav="beranda">Beranda</a></li>
+                <li><a href="elearning.html" data-nav="elearning">E-Learning</a></li>
+                <li><a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a></li>
+                <li><a href="index.html#tentang" data-nav="tentang">Tentang Kami</a></li>
+            </ul>
+            <form class="user-nav-search" data-user-search data-search-target="elearning.html" role="search">
+                <span class="user-nav-search-icon">🔍</span>
+                <input type="search" name="q" placeholder="Cari kelas, instruktur atau topik..." aria-label="Cari kelas">
+            </form>
+            <div class="user-nav-actions" id="userNavActions">
+                <a href="../proses/masuk.php" class="user-btn user-btn-ghost">Login</a>
+                <a href="../proses/daftar.php" class="user-btn user-btn-primary">Daftar</a>
+                <button class="user-hamburger" id="userHamburger" type="button" aria-label="Buka menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="user-overlay" id="userOverlay"></div>
+    <aside class="user-sidebar" id="userSidebar">
+        <div class="user-sidebar-head">
+            <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+            <button class="user-sidebar-close" id="userSidebarClose" type="button" aria-label="Tutup menu">✕</button>
+        </div>
+        <nav>
+            <a href="index.html" data-nav="beranda">Beranda</a>
+            <a href="elearning.html" data-nav="elearning">E-Learning</a>
+            <a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a>
+            <a href="riwayat.html" data-nav="riwayat">Riwayat</a>
+            <a href="kelas.html" data-nav="kelas">Kelas Saya</a>
+            <a href="komunitas.html" data-nav="komunitas">Komunitas</a>
+            <a href="index.html#tentang">Tentang Kami</a>
+        </nav>
+        <div class="user-sidebar-user" id="userSidebarUser"></div>
+        <div class="user-sidebar-auth" id="userSidebarAuth">
+            <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block">Login</a>
+            <a href="../proses/daftar.php" class="user-btn user-btn-outline user-btn-block">Daftar Gratis</a>
+        </div>
+    </aside>
+
+    <main>
+        <section class="user-hero" style="padding-bottom:46px">
+            <div class="user-container">
+                <div class="user-hero-copy">
+                    <span class="user-eyebrow">KOMUNITAS BELAJARYUK</span>
+                    <h1>Belajar lebih seru bersama teman baru</h1>
+                    <p>Gabung ke grup diskusi berdasarkan minatmu. Member yang sudah login dapat melihat
+                        daftar grup aktif di sini.</p>
+                    <div class="user-hero-actions">
+                        <a href="elearning.html" class="user-btn user-btn-primary user-btn-lg">Mulai Belajar</a>
+                        <a href="bootcamp.html" class="user-btn user-btn-outline user-btn-lg">Lihat Bootcamp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="user-container" style="padding-bottom:70px">
+            <div class="user-section-head">
+                <h2>Grup Komunitas</h2>
+                <span class="user-section-sub">Status grup mengikuti status login akunmu</span>
+            </div>
+
+            <div class="user-kelas-grid">
+                <article class="user-panel community-card">
+                    <div class="community-icon">🐍</div>
+                    <h4>Python &amp; Data</h4>
+                    <p>Diskusi Python, analisis data, dan proyek machine learning bersama sesama member.</p>
+                    <div class="community-locked">
+                        <div class="community-note">🔒 Login untuk melihat detail grup aktif.</div>
+                        <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block"
+                           style="margin-top:10px">Login dulu</a>
+                    </div>
+                    <div class="community-open">
+                        <div class="community-note">✅ Grup ini aktif. Detail grup tersedia untuk member yang sudah login.</div>
+                        <a href="kelas.html" class="user-btn user-btn-outline user-btn-block"
+                           style="margin-top:10px">Lihat Kelas Saya</a>
+                    </div>
+                </article>
+
+                <article class="user-panel community-card">
+                    <div class="community-icon">🎨</div>
+                    <h4>UI/UX Design</h4>
+                    <p>Review portofolio, diskusi tool design, dan tantangan desain mingguan.</p>
+                    <div class="community-locked">
+                        <div class="community-note">🔒 Login untuk melihat detail grup aktif.</div>
+                        <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block"
+                           style="margin-top:10px">Login dulu</a>
+                    </div>
+                    <div class="community-open">
+                        <div class="community-note">✅ Grup ini aktif. Detail grup tersedia untuk member yang sudah login.</div>
+                        <a href="kelas.html" class="user-btn user-btn-outline user-btn-block"
+                           style="margin-top:10px">Lihat Kelas Saya</a>
+                    </div>
+                </article>
+
+                <article class="user-panel community-card">
+                    <div class="community-icon">⚛️</div>
+                    <h4>Front-End Web</h4>
+                    <p>HTML, CSS, JavaScript, dan React — saling bantu menyelesaikan bug bersama.</p>
+                    <div class="community-locked">
+                        <div class="community-note">🔒 Login untuk melihat detail grup aktif.</div>
+                        <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block"
+                           style="margin-top:10px">Login dulu</a>
+                    </div>
+                    <div class="community-open">
+                        <div class="community-note">✅ Grup ini aktif. Detail grup tersedia untuk member yang sudah login.</div>
+                        <a href="kelas.html" class="user-btn user-btn-outline user-btn-block"
+                           style="margin-top:10px">Lihat Kelas Saya</a>
+                    </div>
+                </article>
+
+                <article class="user-panel community-card">
+                    <div class="community-icon">📱</div>
+                    <h4>Mobile Development</h4>
+                    <p>Flutter, Android, dan iOS — berbagi tips dan hasil karya aplikasi.</p>
+                    <div class="community-locked">
+                        <div class="community-note">🔒 Login untuk melihat detail grup aktif.</div>
+                        <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block"
+                           style="margin-top:10px">Login dulu</a>
+                    </div>
+                    <div class="community-open">
+                        <div class="community-note">✅ Grup ini aktif. Detail grup tersedia untuk member yang sudah login.</div>
+                        <a href="kelas.html" class="user-btn user-btn-outline user-btn-block"
+                           style="margin-top:10px">Lihat Kelas Saya</a>
+                    </div>
+                </article>
+
+                <article class="user-panel community-card">
+                    <div class="community-icon">🛠</div>
+                    <h4>Back-End Engineering</h4>
+                    <p>Pemodelan database, API, dan arsitektur server untuk proyek nyata.</p>
+                    <div class="community-locked">
+                        <div class="community-note">🔒 Login untuk melihat detail grup aktif.</div>
+                        <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block"
+                           style="margin-top:10px">Login dulu</a>
+                    </div>
+                    <div class="community-open">
+                        <div class="community-note">✅ Grup ini aktif. Detail grup tersedia untuk member yang sudah login.</div>
+                        <a href="kelas.html" class="user-btn user-btn-outline user-btn-block"
+                           style="margin-top:10px">Lihat Kelas Saya</a>
+                    </div>
+                </article>
+
+                <article class="user-panel community-card">
+                    <div class="community-icon">💼</div>
+                    <h4>Karier &amp; Freelance</h4>
+                    <p>Strategi portofolio, negosiasi tarif, dan peluang kerja bersama mentor.</p>
+                    <div class="community-locked">
+                        <div class="community-note">🔒 Login untuk melihat detail grup aktif.</div>
+                        <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block"
+                           style="margin-top:10px">Login dulu</a>
+                    </div>
+                    <div class="community-open">
+                        <div class="community-note">✅ Grup ini aktif. Detail grup tersedia untuk member yang sudah login.</div>
+                        <a href="kelas.html" class="user-btn user-btn-outline user-btn-block"
+                           style="margin-top:10px">Lihat Kelas Saya</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="user-section-head" style="margin-top:38px">
+                <h2>Aturan Komunitas</h2>
+            </div>
+            <div class="user-stat-row">
+                <div class="user-stat-card"><span>1</span><label>Saling menghargai</label></div>
+                <div class="user-stat-card"><span>2</span><label>No spam &amp; promosi</label></div>
+                <div class="user-stat-card"><span>3</span><label>Berbicara on-topic</label></div>
+                <div class="user-stat-card"><span>4</span><label>Bantu sesama member</label></div>
+            </div>
+
+            <div class="user-panel" style="margin-top:34px">
+                <h3>Belum punya akun?</h3>
+                <p class="user-buy-note">
+                    Daftar gratis untuk mengakses grup komunitas, membeli kelas, dan mengikuti bootcamp.
+                </p>
+                <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+                    <a href="../proses/daftar.php" class="user-btn user-btn-primary">Daftar Gratis</a>
+                    <a href="../proses/masuk.php" class="user-btn user-btn-outline">Sudah punya akun</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div class="user-toast" id="userToast"></div>
+
+    <footer class="user-footer">
+        <div class="user-container">
+            <div class="user-footer-grid">
+                <div>
+                    <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+                    <p>Platform pembelajaran digital untuk mengembangkan skill yang dibutuhkan industri modern.</p>
+                </div>
+                <div>
+                    <h5>Menu</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="elearning.html">E-Learning</a></li>
+                        <li><a href="bootcamp.html">Bootcamp</a></li>
+                        <li><a href="komunitas.html">Komunitas</a></li>
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Akun</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="../proses/masuk.php">Login</a></li>
+                        <li><a href="../proses/daftar.php">Daftar</a></li>
+                        <li><a href="kelas.html">Kelas Saya</a></li>
+                        <li><a href="riwayat.html">Riwayat Transaksi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Dukungan</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                        <li><a href="index.html#keunggulan">Kenapa BelajarYuk</a></li>
+                        <li><a href="index.html#statistik">Statistik</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-footer-bottom">
+                <span>© 2026 BelajarYuk. Semua hak dilindungi.</span>
+                <span>Dibuat untuk pembelajaran digital Indonesia.</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="../js/image_helper.js"></script>
+<script src="../js/user-app.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/komunitas.js"></script>
+</body>
+</html>

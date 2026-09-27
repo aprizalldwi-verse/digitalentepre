@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard Admin - BelajarYuk</title>
+
+
+    <!-- =========================================
+         FONT
+    ========================================== -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =========================================
+         CSS
+    ========================================== -->
+
+    <link
+        rel="stylesheet"
+        href="../css/admin.css"
+    >
+
+
+    <!-- =========================================
+         CHART.JS
+    ========================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+
+</head>
+
+
+<body>
+
+
+<div class="page-wrapper">
+
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="navbar">
+
+        <div class="navbar-container">
+
+
+            <!-- LOGO -->
+
+            <a
+                href="../pages/index.html"
+                class="logo"
+            >
+
+                <span class="logo-accent">
+                    BELAJAR
+                </span>YUK
+
+            </a>
+
+
+            <!-- NAV ACTIONS -->
+
+            <div class="nav-actions">
+
+
+                <!-- ADMIN PROFILE -->
+
+                <div class="admin-profile">
+
+                    <div class="profile-icon">
+                        A
+                    </div>
+
+                    <div class="profile-text">
+
+                        <span class="profile-label">
+                            ADMIN
+                        </span>
+
+                        <span class="profile-name">
+                            Administrator
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HAMBURGER -->
+
+                <button
+                    type="button"
+                    class="hamburger"
+                    onclick="toggleSidebar()"
+                    aria-label="Buka menu"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         OVERLAY
+    ========================================== -->
+
+    <div
+        class="overlay"
+        onclick="closeSidebar()"
+    ></div>
+
+
+    <!-- =========================================
+         SIDEBAR
+         SAMA SEPERTI SIDEBAR USER
+    ========================================== -->
+
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
+
+
+        <!-- SIDEBAR HEADER -->
+
+        <div class="sidebar-head">
+
+            <span class="sidebar-tag">
+                ADMIN PANEL
+            </span>
+
+            <h3>
+                Menu Utama
+            </h3>
+
+        </div>
+
+
+        <!-- SIDEBAR MENU -->
+
+        <nav class="sidebar-nav">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="dashboard.php"
+                class="active"
+            >
+
+                <span class="menu-icon">
+                    ⌂
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <!-- E-LEARNING -->
+
+            <a href="elearning_admin.php">
+
+                <span class="menu-icon">
+                    ▣
+                </span>
+
+                <span>
+                    E-Learning
+                </span>
+
+            </a>
+
+
+            <!-- BOOTCAMP -->
+
+            <a href="bootcamp_admin.php">
+
+                <span class="menu-icon">
+                    ◆
+                </span>
+
+                <span>
+                    Bootcamp
+                </span>
+
+            </a>
+
+
+            <!-- PENJUALAN -->
+
+            <a href="transaksi_admin.php">
+
+                <span class="menu-icon">
+                    ▤
+                </span>
+
+                <span>
+                    Transaksi
+                </span>
+
+            </a>
+
+            <a href="laporan_admin.php">
+                <span class="menu-icon">&#9649;</span>
+                Laporan
+            </a>
+
+
+            <!-- PENGGUNA -->
+
+            <a href="user_admin.php">
+
+                <span class="menu-icon">
+                    ♙
+                </span>
+
+                <span>
+                    Pengguna
+                </span>
+
+            </a>
+
+
+
+
+            <!-- PEMISAH -->
+
+            <div class="sidebar-divider"></div>
+
+
+            <!-- LOGOUT -->
+
+            <a
+                href="../proses/logout.php"
+                class="logout"
+            >
+
+                <span class="menu-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout Admin
+                </span>
+
+            </a>
+
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =========================================
+             PAGE HEADER
+        ========================================== -->
+
+        <section class="page-header">
+
+            <span class="section-label">
+                ADMIN PANEL
+            </span>
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <p>
+                Kelola dan pantau aktivitas
+                BelajarYuk.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             STATISTIK
+        ========================================== -->
+
+        <section class="stats-grid">
+
+
+            <!-- TOTAL PENJUALAN -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        Total Penjualan
+                    </span>
+
+                    <div class="stat-icon">
+                        Rp
+                    </div>
+
+                </div>
+
+                <h2 id="totalSales">
+                    Memuat...
+                </h2>
+
+                <p class="stat-description">
+                    Semua produk
+                </p>
+
+            </div>
+
+
+            <!-- E-LEARNING -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        E-Learning Terjual
+                    </span>
+
+                    <div class="stat-icon">
+                        EL
+                    </div>
+
+                </div>
+
+                <h2 id="totalElearning">
+                    Memuat...
+                </h2>
+
+                <p class="stat-description">
+                    Course terjual
+                </p>
+
+            </div>
+
+
+            <!-- BOOTCAMP -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        Bootcamp Terjual
+                    </span>
+
+                    <div class="stat-icon">
+                        BC
+                    </div>
+
+                </div>
+
+                <h2 id="totalBootcamp">
+                    Memuat...
+                </h2>
+
+                <p class="stat-description">
+                    Peserta bootcamp
+                </p>
+
+            </div>
+
+
+            <!-- TOTAL USER -->
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+
+                    <span class="stat-title">
+                        Total Pengguna
+                    </span>
+
+                    <div class="stat-icon">
+                        US
+                    </div>
+
+                </div>
+
+                <h2 id="totalUsers">
+                    Memuat...
+                </h2>
+
+                <p class="stat-description">
+                    Pengguna terdaftar
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             DASHBOARD GRID
+        ========================================== -->
+
+        <section class="dashboard-grid">
+
+
+            <!-- =====================================
+                 GRAFIK PENJUALAN
+            ====================================== -->
+
+            <div class="content-card sales-card">
+
+
+                <div class="card-header">
+
+
+                    <div>
+
+                        <span class="card-label">
+                            ANALISIS PENJUALAN
+                        </span>
+
+                        <h2>
+                            Penjualan
+                        </h2>
+
+                        <p>
+                            Data berdasarkan transaksi
+                            yang ada di database.
+                        </p>
+
+                    </div>
+
+
+                    <!-- FILTER PERIODE -->
+
+                    <select
+                        id="periodFilter"
+                        class="period-filter"
+                        onchange="changePeriod()"
+                    >
+
+                        <option value="1">
+                            1 Tahun
+                        </option>
+
+                        <option value="2">
+                            2 Tahun
+                        </option>
+
+                        <option value="3">
+                            3 Tahun
+                        </option>
+
+                        <option value="5">
+                            5 Tahun
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+                <!-- CHART -->
+
+                <div class="chart-wrapper">
+
+                    <canvas
+                        id="salesChart"
+                    ></canvas>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =====================================
+                 PRODUK
+            ====================================== -->
+
+            <div class="content-card">
+
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-label">
+                            PRODUK
+                        </span>
+
+                        <h2>
+                            Produk
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="product-summary">
+
+
+                    <!-- E-LEARNING -->
+
+                    <div class="product-item">
+
+
+                        <div class="product-left">
+
+
+                            <div class="product-icon">
+                                EL
+                            </div>
+
+
+                            <div>
+
+                                <h4>
+                                    E-Learning
+                                </h4>
+
+                                <p>
+                                    Course digital
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <strong id="productElearning">
+                            -
+                        </strong>
+
+
+                    </div>
+
+
+                    <!-- BOOTCAMP -->
+
+                    <div class="product-item">
+
+
+                        <div class="product-left">
+
+
+                            <div class="product-icon">
+                                BC
+                            </div>
+
+
+                            <div>
+
+                                <h4>
+                                    Bootcamp
+                                </h4>
+
+                                <p>
+                                    Program intensif
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <strong id="productBootcamp">
+                            -
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- KELOLA PRODUK -->
+
+                <a
+                    href="elearning_admin.php"
+                    class="manage-product"
+                >
+
+                    <span>
+                        Kelola Produk
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             PENJUALAN BULANAN
+        ========================================== -->
+
+        <section class="content-card monthly-card">
+
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-label">
+                        RINGKASAN
+                    </span>
+
+                    <h2>
+                        Penjualan Bulanan
+                    </h2>
+
+                    <p>
+                        Penjualan setiap bulan
+                        pada tahun berjalan.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="month-grid"
+                id="monthGrid"
+            >
+
+                <div class="loading-data">
+                    Memuat data...
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             TRANSAKSI TERBARU
+        ========================================== -->
+
+        <section class="content-card transaction-card">
+
+
+            <div class="card-header">
+
+
+                <div>
+
+                    <span class="card-label">
+                        TRANSAKSI
+                    </span>
+
+                    <h2>
+                        Transaksi Terbaru
+                    </h2>
+
+                    <p>
+                        Diambil langsung dari database.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="transaksi_admin.php"
+                    class="view-all"
+                >
+                    Lihat Semua →
+                </a>
+
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-wrapper">
+
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Pembeli
+                            </th>
+
+                            <th>
+                                Produk
+                            </th>
+
+                            <th>
+                                Tanggal
+                            </th>
+
+                            <th>
+                                Total
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody
+                        id="transactionTable"
+                    >
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="empty-data"
+                            >
+                                Memuat transaksi...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =========================================
+             FOOTER
+        ========================================== -->
+
+        <footer class="footer">
+
+
+            <div>
+
+                <h2>
+
+                    <span>
+                        BELAJAR
+                    </span>YUK
+
+                </h2>
+
+
+                <p>
+                    Platform pembelajaran digital
+                    untuk mengakselerasi skill dan
+                    karier masa depanmu.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+
+                <a href="../pages/index.html">
+                    Website
+                </a>
+
+
+                <a href="elearning_admin.php">
+                    E-Learning
+                </a>
+
+
+                <a href="bootcamp_admin.php">
+                    Bootcamp
+                </a>
+
+
+            </div>
+
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+<!-- =========================================
+     JAVASCRIPT
+========================================== -->
+
+<script src="../js/image_helper.js"></script>
+    <script
+        src="../js/admin.js"
+></script>
+
+
+
+</body>
+
+</html>

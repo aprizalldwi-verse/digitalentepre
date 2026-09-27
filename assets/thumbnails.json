@@ -1,0 +1,426 @@
+{
+  "course_android.png": {
+    "title": "Android Development dengan Kotlin",
+    "badge": "Mobile Dev",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "kotlin",
+    "type": "elearning"
+  },
+  "course_belajar_html_css.png": {
+    "title": "Belajar HTML & CSS dari Dasar",
+    "badge": "Front-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "html",
+    "type": "elearning"
+  },
+  "course_bisnis_online.png": {
+    "title": "Bisnis Online",
+    "badge": "Bisnis",
+    "subtitle": "E-Commerce",
+    "corner": "E-Learning",
+    "theme": "business",
+    "type": "elearning"
+  },
+  "course_bisnis_pemula.png": {
+    "title": "Strategi Bisnis Pemula",
+    "badge": "Bisnis",
+    "subtitle": "Business Strategy",
+    "corner": "E-Learning",
+    "theme": "business",
+    "type": "elearning"
+  },
+  "course_branding.png": {
+    "title": "Branding Design",
+    "badge": "Design",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "branding",
+    "type": "elearning"
+  },
+  "course_canva.png": {
+    "title": "Canva untuk Bisnis",
+    "badge": "Design",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "design",
+    "type": "elearning"
+  },
+  "course_content_creator.png": {
+    "title": "Content Creator Sukses",
+    "badge": "Design",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "content",
+    "type": "elearning"
+  },
+  "course_copywriting.png": {
+    "title": "Copywriting Bisnis",
+    "badge": "Digital Marketing",
+    "subtitle": "Content Writing",
+    "corner": "E-Learning",
+    "theme": "copywriting",
+    "type": "elearning"
+  },
+  "course_data_excel.png": {
+    "title": "Data Analysis dengan Excel",
+    "badge": "Data & AI",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "excel",
+    "type": "elearning"
+  },
+  "course_data_python.png": {
+    "title": "Data Analysis dengan Python",
+    "badge": "Data & AI",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "python",
+    "type": "elearning"
+  },
+  "course_digital_marketing.png": {
+    "title": "Digital Marketing",
+    "badge": "Digital Marketing",
+    "subtitle": "Marketing Strategy",
+    "corner": "E-Learning",
+    "theme": "marketing",
+    "type": "elearning"
+  },
+  "course_entrepreneur.png": {
+    "title": "Digital Entrepreneurship",
+    "badge": "Bisnis",
+    "subtitle": "Startup Journey",
+    "corner": "E-Learning",
+    "theme": "entrepreneur",
+    "type": "elearning"
+  },
+  "course_excel_admin.png": {
+    "title": "Excel untuk Administrasi",
+    "badge": "Data & AI",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "excel",
+    "type": "elearning"
+  },
+  "course_excel_pemula.png": {
+    "title": "Microsoft Excel untuk Pemula",
+    "badge": "Data & AI",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "excel",
+    "type": "elearning"
+  },
+  "course_figma.png": {
+    "title": "UI/UX Design dengan Figma",
+    "badge": "UI/UX",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "figma",
+    "type": "elearning"
+  },
+  "course_figma_lanjutan.png": {
+    "title": "Figma dari Dasar sampai Mahir",
+    "badge": "UI/UX",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "figma",
+    "type": "elearning"
+  },
+  "course_flutter.png": {
+    "title": "Flutter untuk Pemula",
+    "badge": "Mobile Dev",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "mobile",
+    "type": "elearning"
+  },
+  "course_fullstack.png": {
+    "title": "Full Stack Web Development",
+    "badge": "Front-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "web",
+    "type": "elearning"
+  },
+  "course_graphic_design.png": {
+    "title": "Graphic Design Dasar",
+    "badge": "Design",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "design",
+    "type": "elearning"
+  },
+  "course_javascript_pemula.png": {
+    "title": "JavaScript untuk Pemula",
+    "badge": "Front-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "js",
+    "type": "elearning"
+  },
+  "course_js_modern.png": {
+    "title": "JavaScript Modern (ES6+)",
+    "badge": "Front-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "js",
+    "type": "elearning"
+  },
+  "course_kotlin.png": {
+    "title": "Kotlin untuk Pemula",
+    "badge": "Mobile Dev",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "kotlin",
+    "type": "elearning"
+  },
+  "course_laravel.png": {
+    "title": "Laravel untuk Pemula",
+    "badge": "Back-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "laravel",
+    "type": "elearning"
+  },
+  "course_mobile_ui.png": {
+    "title": "Mobile UI Design",
+    "badge": "Mobile Dev",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "mobile",
+    "type": "elearning"
+  },
+  "course_nodejs.png": {
+    "title": "Node.js untuk Pemula",
+    "badge": "Back-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "node",
+    "type": "elearning"
+  },
+  "course_photoshop.png": {
+    "title": "Photoshop untuk Pemula",
+    "badge": "Design",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "photoshop",
+    "type": "elearning"
+  },
+  "course_php_mysql.png": {
+    "title": "PHP & MySQL Lengkap",
+    "badge": "Back-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "php",
+    "type": "elearning"
+  },
+  "course_php_native.png": {
+    "title": "PHP Native untuk Pemula",
+    "badge": "Back-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "php",
+    "type": "elearning"
+  },
+  "course_python_pemula.png": {
+    "title": "Python untuk Pemula",
+    "badge": "Data & AI",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "python",
+    "type": "elearning"
+  },
+  "course_react.png": {
+    "title": "React JS untuk Pemula",
+    "badge": "Front-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "react",
+    "type": "elearning"
+  },
+  "course_react_native.png": {
+    "title": "React Native untuk Pemula",
+    "badge": "Mobile Dev",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "react",
+    "type": "elearning"
+  },
+  "course_rest_api.png": {
+    "title": "REST API dengan PHP",
+    "badge": "Back-End",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "php",
+    "type": "elearning"
+  },
+  "course_seo.png": {
+    "title": "SEO Website",
+    "badge": "Digital Marketing",
+    "subtitle": "Search Engine Optimization",
+    "corner": "E-Learning",
+    "theme": "seo",
+    "type": "elearning"
+  },
+  "course_smm.png": {
+    "title": "Social Media Marketing",
+    "badge": "Digital Marketing",
+    "subtitle": "SMM Mastery",
+    "corner": "E-Learning",
+    "theme": "smm",
+    "type": "elearning"
+  },
+  "course_uiux_pemula.png": {
+    "title": "UI/UX Design untuk Pemula",
+    "badge": "UI/UX",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "uiux",
+    "type": "elearning"
+  },
+  "course_user_research.png": {
+    "title": "User Research Methods",
+    "badge": "UI/UX",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "uiux",
+    "type": "elearning"
+  },
+  "course_wireframe.png": {
+    "title": "Wireframe & Prototyping",
+    "badge": "UI/UX",
+    "subtitle": "Kelas E-Learning",
+    "corner": "E-Learning",
+    "theme": "uiux",
+    "type": "elearning"
+  },
+  "bootcamp_ai_ml.png": {
+    "title": "AI & Machine Learning",
+    "badge": "Bootcamp Data & AI",
+    "subtitle": "Data & AI Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "data",
+    "type": "bootcamp"
+  },
+  "bootcamp_android.png": {
+    "title": "Android Developer",
+    "badge": "Bootcamp Mobile Dev",
+    "subtitle": "Mobile Dev Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "android",
+    "type": "bootcamp"
+  },
+  "bootcamp_content_creator.png": {
+    "title": "Content Creator Bootcamp",
+    "badge": "Content",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "content",
+    "type": "bootcamp"
+  },
+  "bootcamp_data_analyst.png": {
+    "title": "Data Analyst Bootcamp",
+    "badge": "Data Science",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "data",
+    "type": "bootcamp"
+  },
+  "bootcamp_digital_marketing.png": {
+    "title": "Digital Marketing Bootcamp",
+    "badge": "Digital Marketing",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "marketing",
+    "type": "bootcamp"
+  },
+  "bootcamp_entrepreneur.png": {
+    "title": "Digital Entrepreneur Bootcamp",
+    "badge": "Business",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "entrepreneur",
+    "type": "bootcamp"
+  },
+  "bootcamp_flutter.png": {
+    "title": "Flutter Developer",
+    "badge": "Bootcamp Mobile Dev",
+    "subtitle": "Mobile Dev Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "mobile",
+    "type": "bootcamp"
+  },
+  "bootcamp_frontend.png": {
+    "title": "Frontend Developer",
+    "badge": "Bootcamp Development",
+    "subtitle": "Front-End Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "web",
+    "type": "bootcamp"
+  },
+  "bootcamp_fullstack.png": {
+    "title": "Full Stack Web Developer Bootcamp",
+    "badge": "Web Development",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "web",
+    "type": "bootcamp"
+  },
+  "bootcamp_laravel.png": {
+    "title": "Laravel Developer Bootcamp",
+    "badge": "Web Development",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "laravel",
+    "type": "bootcamp"
+  },
+  "bootcamp_nodejs.png": {
+    "title": "Node.js Backend",
+    "badge": "Bootcamp Development",
+    "subtitle": "Back-End Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "node",
+    "type": "bootcamp"
+  },
+  "bootcamp_product_design.png": {
+    "title": "Product Design",
+    "badge": "Bootcamp Design",
+    "subtitle": "UI/UX Design Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "design",
+    "type": "bootcamp"
+  },
+  "bootcamp_python.png": {
+    "title": "Python Developer Bootcamp",
+    "badge": "Programming",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "python",
+    "type": "bootcamp"
+  },
+  "bootcamp_react.png": {
+    "title": "React Front-End",
+    "badge": "Bootcamp Development",
+    "subtitle": "Front-End Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "react",
+    "type": "bootcamp"
+  },
+  "bootcamp_react_native.png": {
+    "title": "React Native",
+    "badge": "Bootcamp Development",
+    "subtitle": "Mobile Dev Bootcamp",
+    "corner": "Bootcamp",
+    "theme": "react",
+    "type": "bootcamp"
+  },
+  "bootcamp_uiux.png": {
+    "title": "UI/UX Designer Bootcamp",
+    "badge": "Design",
+    "subtitle": "Program Bootcamp Profesional",
+    "corner": "Bootcamp",
+    "theme": "uiux",
+    "type": "bootcamp"
+  }
+}

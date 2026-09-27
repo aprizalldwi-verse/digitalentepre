@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout — BelajarYuk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-frontend.css">
+    <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="Mid-client-rNRn8bYJC1ZpblR5" async></script>
+</head>
+<body>
+<div class="user-frontend" id="userFrontend">
+
+    <header class="user-navbar">
+        <div class="user-container user-navbar-inner">
+            <a class="user-brand" href="index.html"><span class="user-brand-badge">🎓</span> BelajarYuk</a>
+            <ul class="user-nav-menu">
+                <li><a href="index.html" data-nav="beranda">Beranda</a></li>
+                <li><a href="elearning.html" data-nav="elearning">E-Learning</a></li>
+                <li><a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a></li>
+                <li><a href="index.html#tentang" data-nav="tentang">Tentang Kami</a></li>
+            </ul>
+            <form class="user-nav-search" data-user-search data-search-target="elearning.html" role="search">
+                <span class="user-nav-search-icon">🔍</span>
+                <input type="search" name="q" placeholder="Cari kelas, instruktur atau topik..." aria-label="Cari kelas">
+            </form>
+            <div class="user-nav-actions" id="userNavActions">
+                <a href="../proses/masuk.php" class="user-btn user-btn-ghost">Login</a>
+                <a href="../proses/daftar.php" class="user-btn user-btn-primary">Daftar</a>
+                <button class="user-hamburger" id="userHamburger" type="button" aria-label="Buka menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="user-overlay" id="userOverlay"></div>
+    <aside class="user-sidebar" id="userSidebar">
+        <div class="user-sidebar-head">
+            <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+            <button class="user-sidebar-close" id="userSidebarClose" type="button" aria-label="Tutup menu">✕</button>
+        </div>
+        <nav>
+            <a href="index.html" data-nav="beranda">Beranda</a>
+            <a href="elearning.html" data-nav="elearning">E-Learning</a>
+            <a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a>
+            <a href="riwayat.html" data-nav="riwayat">Riwayat</a>
+            <a href="kelas.html" data-nav="kelas">Kelas Saya</a>
+            <a href="index.html#tentang">Tentang Kami</a>
+        </nav>
+        <div class="user-sidebar-user" id="userSidebarUser"></div>
+        <div class="user-sidebar-auth" id="userSidebarAuth">
+            <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block">Login</a>
+            <a href="../proses/daftar.php" class="user-btn user-btn-outline user-btn-block">Daftar Gratis</a>
+        </div>
+    </aside>
+
+    <main>
+        <section class="user-checkout-head">
+            <div class="user-container">
+                <div class="user-breadcrumb">
+                    <a href="index.html">Beranda</a> <span>→</span>
+                    <a href="#" id="breadcrumbBack">Katalog</a> <span>→</span>
+                    <span>Checkout</span>
+                </div>
+                <h1>Checkout</h1>
+                <div class="user-steps">
+                    <span class="user-step is-active"><i>1</i> Data Kursi</span>
+                    <span class="user-step"><i>2</i> Pembayaran</span>
+                    <span class="user-step"><i>3</i> Selesai</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="user-container" style="padding-bottom:70px">
+            <div id="checkoutLoading" class="user-loader">
+                <div class="user-spinner"></div> Menyiapkan pesanan...
+            </div>
+
+            <div id="checkoutError" class="user-state" style="display:none">
+                <div class="user-state-icon">⚠️</div>
+                <h4 id="checkoutErrorTitle">Pesanan tidak ditemukan</h4>
+                <p id="checkoutErrorMessage">Pastikan URL checkout menyertakan produk yang valid.</p>
+                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+                    <a href="elearning.html" class="user-btn user-btn-outline">E-Learning</a>
+                    <a href="bootcamp.html" class="user-btn user-btn-primary">Bootcamp</a>
+                </div>
+            </div>
+
+            <div class="user-checkout-grid" id="checkoutContent" style="display:none">
+                <div>
+                    <div class="user-panel">
+                        <h3>Informasi Pembeli</h3>
+                        <ul class="user-info-list">
+                            <li><span>Nama</span><strong id="buyerName">-</strong></li>
+                            <li><span>Email</span><strong id="buyerEmail">-</strong></li>
+                        </ul>
+                        <p class="user-buy-note" style="margin-top:14px">
+                            Data pembeli diambil dari akun yang sedang login. Pastikan email aktif
+                            karena akses kelas dan kuitansi dikirim ke email tersebut.
+                        </p>
+                    </div>
+
+                    <div class="user-panel">
+                        <h3>Metode Pembayaran</h3>
+                        <p class="user-buy-note" style="margin-bottom:14px">
+                            Pembayaran diproses oleh Midtrans (sandbox). Kamu dapat memilih
+                            transfer bank, e-wallet, QRIS, kartu kredit, atau gerai retail.
+                        </p>
+                        <ul class="user-buy-list">
+                            <li><span>🏦 Transfer Bank</span><strong>BCA / BNI / BRI / Mandiri</strong></li>
+                            <li><span>💳 E-Wallet & QRIS</span><strong>GoPay, OVO, DANA, ShopeePay</strong></li>
+                            <li><span>🏪 Gerai Retail</span><strong>Alfamart, Indomaret</strong></li>
+                        </ul>
+                        <p class="user-buy-note" style="margin-top:14px">
+                            Transaksi tercatat otomatis ke database setelah pembayaran dikonfirmasi
+                            sistem — cek <a href="riwayat.html"><strong>Riwayat Transaksi</strong></a>.
+                        </p>
+                    </div>
+
+                    <div class="user-panel">
+                        <h3>Sudah punya akses?</h3>
+                        <p class="user-buy-note">
+                            Cek <a href="kelas.html"><strong>Kelas Saya</strong></a> untuk melanjutkan
+                            pembelajaran, atau lihat status pembayaran di
+                            <a href="riwayat.html"><strong>Riwayat</strong></a>.
+                        </p>
+                    </div>
+                </div>
+
+                <aside>
+                    <div class="user-buy-card" style="position:sticky;top:96px">
+                        <div class="user-order-media">
+                            <img id="orderImage" src="" alt="Thumbnail produk">
+                        </div>
+                        <span class="user-tag" id="orderCategory">-</span>
+                        <h3 class="user-order-title" id="orderName">-</h3>
+                        <p class="user-order-sub" id="orderSub">-</p>
+
+                        <ul class="user-order-summary" id="orderSummary">
+                            <li><span>Harga normal</span><strong id="lineNormal">-</strong></li>
+                            <li><span>Diskon promo</span><strong id="lineDiscount" class="is-discount">-</strong></li>
+                            <li class="is-total"><span>Total bayar</span><strong id="lineTotal">-</strong></li>
+                        </ul>
+
+                        <button type="button" class="user-btn user-btn-primary user-btn-block user-btn-lg" id="payButton">
+                            💳 Bayar Sekarang
+                        </button>
+                        <a href="elearning.html" class="user-btn user-btn-outline user-btn-block user-btn-lg"
+                           id="backButton" style="margin-top:10px">Lanjut Belanja</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <div class="user-toast" id="userToast"></div>
+
+    <footer class="user-footer">
+        <div class="user-container">
+            <div class="user-footer-grid">
+                <div>
+                    <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+                    <p>Platform pembelajaran digital untuk mengembangkan skill yang dibutuhkan industri modern.</p>
+                </div>
+                <div>
+                    <h5>Menu</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="elearning.html">E-Learning</a></li>
+                        <li><a href="bootcamp.html">Bootcamp</a></li>
+                        <li><a href="komunitas.html">Komunitas</a></li>
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Akun</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="../proses/masuk.php">Login</a></li>
+                        <li><a href="../proses/daftar.php">Daftar</a></li>
+                        <li><a href="kelas.html">Kelas Saya</a></li>
+                        <li><a href="riwayat.html">Riwayat Transaksi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Dukungan</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                        <li><a href="index.html#keunggulan">Kenapa BelajarYuk</a></li>
+                        <li><a href="index.html#statistik">Statistik</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-footer-bottom">
+                <span>© 2026 BelajarYuk. Semua hak dilindungi.</span>
+                <span>Dibuat untuk pembelajaran digital Indonesia.</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="../js/image_helper.js"></script>
+<script src="../js/user-app.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/checkout.js"></script>
+</body>
+</html>

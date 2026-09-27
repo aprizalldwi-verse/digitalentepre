@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BelajarYuk — Platform Pembelajaran Digital</title>
+    <meta name="description" content="Tingkatkan skill melalui kelas E-Learning dan Bootcamp intensif bersama BelajarYuk.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-frontend.css">
+</head>
+<body>
+<div class="user-frontend" id="userFrontend">
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="user-navbar">
+        <div class="user-container user-navbar-inner">
+            <a class="user-brand" href="index.html">
+                <span class="user-brand-badge">🎓</span> BelajarYuk
+            </a>
+
+            <ul class="user-nav-menu">
+                <li><a href="index.html" data-nav="beranda">Beranda</a></li>
+                <li><a href="elearning.html" data-nav="elearning">E-Learning</a></li>
+                <li><a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a></li>
+                <li><a href="#tentang" data-nav="tentang">Tentang Kami</a></li>
+            </ul>
+
+            <form class="user-nav-search" data-user-search data-search-target="elearning.html" role="search">
+                <span class="user-nav-search-icon">🔍</span>
+                <input type="search" name="q" placeholder="Cari kelas, instruktur atau topik..." aria-label="Cari kelas">
+            </form>
+
+            <div class="user-nav-actions" id="userNavActions">
+                <a href="../proses/masuk.php" class="user-btn user-btn-ghost">Login</a>
+                <a href="../proses/daftar.php" class="user-btn user-btn-primary">Daftar</a>
+                <button class="user-hamburger" id="userHamburger" type="button" aria-label="Buka menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ SIDEBAR MOBILE ============ -->
+    <div class="user-overlay" id="userOverlay"></div>
+    <aside class="user-sidebar" id="userSidebar">
+        <div class="user-sidebar-head">
+            <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+            <button class="user-sidebar-close" id="userSidebarClose" type="button" aria-label="Tutup menu">✕</button>
+        </div>
+        <nav>
+            <a href="index.html" data-nav="beranda">Beranda</a>
+            <a href="elearning.html" data-nav="elearning">E-Learning</a>
+            <a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a>
+            <a href="riwayat.html" data-nav="riwayat">Riwayat</a>
+            <a href="kelas.html" data-nav="kelas">Kelas Saya</a>
+            <a href="#tentang">Tentang Kami</a>
+        </nav>
+        <div class="user-sidebar-user" id="userSidebarUser"></div>
+        <div class="user-sidebar-auth" id="userSidebarAuth">
+            <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block">Login</a>
+            <a href="../proses/daftar.php" class="user-btn user-btn-outline user-btn-block">Daftar Gratis</a>
+        </div>
+    </aside>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="user-hero">
+            <div class="user-container user-hero-inner">
+                <div class="user-hero-copy">
+                    <span class="user-hero-tag">🚀 Platform Pembelajaran Digital</span>
+                    <h1 class="user-hero-title">Tingkatkan Skill,<br><span>Bangun Masa Depanmu</span></h1>
+                    <p class="user-hero-sub">Belajar skill digital melalui kelas dan bootcamp yang dirancang untuk kebutuhan industri.</p>
+
+                    <form class="user-hero-search" data-user-search data-search-target="elearning.html">
+                        <input type="search" name="q" placeholder="Cari kelas yang ingin kamu pelajari..." aria-label="Cari kelas">
+                        <button class="user-btn user-btn-primary" type="submit">🔍 Cari</button>
+                    </form>
+
+                    <div class="user-hero-actions">
+                        <a href="elearning.html" class="user-btn user-btn-primary user-btn-lg">Mulai Belajar</a>
+                        <a href="#populer" class="user-btn user-btn-outline user-btn-lg">Jelajahi Kelas</a>
+                    </div>
+
+                    <div class="user-hero-features">
+                        <div class="user-hero-feature">
+                            <span class="user-hero-feature-icon">🕒</span>
+                            <div><strong>Akses Fleksibel</strong><span>Belajar 24/7</span></div>
+                        </div>
+                        <div class="user-hero-feature">
+                            <span class="user-hero-feature-icon">📚</span>
+                            <div><strong>Materi Berkualitas</strong><span>Terstruktur &amp; rapi</span></div>
+                        </div>
+                        <div class="user-hero-feature">
+                            <span class="user-hero-feature-icon">🎓</span>
+                            <div><strong>Sertifikat Resmi</strong><span>Naikkan kredibilitas</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-hero-visual">
+                    <div class="user-hero-showcase" id="heroShowcase">
+                        <div class="user-hero-showcase-item is-main"></div>
+                        <div class="user-hero-showcase-item"></div>
+                        <div class="user-hero-showcase-item"></div>
+                    </div>
+                    <div class="user-hero-float user-hero-float-a">
+                        <span class="user-hero-float-dot">👥</span>
+                        <div><strong id="heroFloatPeserta">-</strong><small>Peserta aktif</small></div>
+                    </div>
+                    <div class="user-hero-float user-hero-float-b">
+                        <span class="user-hero-float-dot">📚</span>
+                        <div><strong id="heroFloatKelas">-</strong><small>Kelas &amp; bootcamp</small></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ KATEGORI ============ -->
+        <section class="user-section user-section-white" id="kategori">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Jelajahi Berdasarkan Kategori</h2>
+                        <p class="user-section-sub">Pilih kategori yang sesuai dengan minat dan buat target karirmu.</p>
+                    </div>
+                    <a class="user-link-more" href="elearning.html">Lihat Semua →</a>
+                </div>
+                <div class="user-cat-grid" id="kategoriGrid">
+                    <div class="user-loader"><div class="user-spinner"></div>Memuat kategori...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ E-LEARNING POPULER ============ -->
+        <section class="user-section" id="populer">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Kelas E-Learning Populer</h2>
+                        <p class="user-section-sub">Belajar dari mana saja, kapan saja. Mulai perjalanan skill kamu sekarang.</p>
+                    </div>
+                    <a class="user-link-more" href="elearning.html">Lihat Semua →</a>
+                </div>
+                <div class="user-course-grid" id="populerGrid">
+                    <div class="user-loader"><div class="user-spinner"></div>Memuat kelas...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ BOOTCAMP PILIHAN ============ -->
+        <section class="user-section user-section-white" id="bootcamp">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Bootcamp Pilihan</h2>
+                        <p class="user-section-sub">Program intensif untuk membangun skill profesional dan siap kerja.</p>
+                    </div>
+                    <a class="user-link-more" href="bootcamp.html">Lihat Semua →</a>
+                </div>
+                <div class="user-bootcamp-grid" id="bootcampGrid">
+                    <div class="user-loader"><div class="user-spinner"></div>Memuat bootcamp...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ INSTRUKTUR ============ -->
+        <section class="user-section" id="instruktur">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Instruktur Terbaik Kami</h2>
+                        <p class="user-section-sub">Belajar langsung dari para ahli di bidangnya.</p>
+                    </div>
+                </div>
+                <div class="user-instructor-grid" id="instrukturGrid">
+                    <div class="user-loader"><div class="user-spinner"></div>Memuat instruktur...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ KEUNGGULAN ============ -->
+        <section class="user-section user-section-white" id="keunggulan">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Kenapa BelajarYuk?</h2>
+                        <p class="user-section-sub">Kami mendukung pengalaman belajar yang nyaman dan terarah.</p>
+                    </div>
+                </div>
+                <div class="user-feature-grid">
+                    <div class="user-feature-card">
+                        <span class="user-feature-icon">🕐</span>
+                        <div>
+                            <h4>Belajar Kapan Saja</h4>
+                            <p>Akses materi 24/7, dari mana saja, tanpa batas waktu.</p>
+                        </div>
+                    </div>
+                    <div class="user-feature-card">
+                        <span class="user-feature-icon">🧩</span>
+                        <div>
+                            <h4>Materi Terstruktur</h4>
+                            <p>Setiap kelas dirancang dengan roadmap yang jelas dan berurutan.</p>
+                        </div>
+                    </div>
+                    <div class="user-feature-card">
+                        <span class="user-feature-icon">🧑‍🏫</span>
+                        <div>
+                            <h4>Instruktur Berpengalaman</h4>
+                            <p>Belajar dari praktisi yang sudah terbukti di dunia kerja.</p>
+                        </div>
+                    </div>
+                    <div class="user-feature-card">
+                        <span class="user-feature-icon">🏅</span>
+                        <div>
+                            <h4>Sertifikat Pembelajaran</h4>
+                            <p>Dapatkan sertifikat resmi setiap kelas yang kamu selesaikan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ STATISTIK ============ -->
+        <section class="user-section" id="statistik">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Angka yang Membuktikan</h2>
+                        <p class="user-section-sub">Bagaimana BelajarYuk membantu ribuan orang meningkatkan skill dan karier.</p>
+                    </div>
+                </div>
+                <div class="user-stat-band" id="statistikBand">
+                    <div class="user-stat-item">
+                        <span class="user-stat-icon">👥</span>
+                        <div class="user-stat-value" id="statPengguna">-</div>
+                        <div class="user-stat-label">Pengguna Terdaftar</div>
+                    </div>
+                    <div class="user-stat-item">
+                        <span class="user-stat-icon">📘</span>
+                        <div class="user-stat-value" id="statKelas">-</div>
+                        <div class="user-stat-label">Kelas Tersedia</div>
+                    </div>
+                    <div class="user-stat-item">
+                        <span class="user-stat-icon">💼</span>
+                        <div class="user-stat-value" id="statTransaksi">-</div>
+                        <div class="user-stat-label">Pembelian Berhasil</div>
+                    </div>
+                    <div class="user-stat-item">
+                        <span class="user-stat-icon">✅</span>
+                        <div class="user-stat-value" id="statPeserta">-</div>
+                        <div class="user-stat-label">Peserta Aktif</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TESTIMONI / KOMUNITAS ============ -->
+        <section class="user-section user-section-white" id="testimoni">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Apa Kata Mereka?</h2>
+                        <p class="user-section-sub">Pengalaman belajar bersama BelajarYuk.</p>
+                    </div>
+                </div>
+                <div class="user-note" id="testimoniNote">
+                    Belum ada testimoni publik yang tersimpan di database. Bagikan pengalaman belajarmu
+                    setelah menyelesaikan kelas — testimoni akan tampil di sini sebagai data asli.
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TENTANG KAMI ============ -->
+        <section class="user-section" id="tentang">
+            <div class="user-container">
+                <div class="user-section-head">
+                    <div>
+                        <h2 class="user-section-title">Tentang Kami</h2>
+                        <p class="user-section-sub">Kenali lebih dekat platform belajar untuk masa depanmu.</p>
+                    </div>
+                </div>
+                <div class="user-detail-grid">
+                    <div>
+                        <p class="user-detail-desc">
+                            BelajarYuk adalah platform pembelajaran digital yang menyediakan kelas E-Learning
+                            mandiri maupun Bootcamp intensif dengan mentor berpengalaman. Semua materi
+                            disusun berdasarkan kebutuhan industri agar kamu siap bekerja setelah belajar.
+                        </p>
+                        <div class="user-feature-grid" style="margin-top:22px">
+                            <div class="user-feature-card">
+                                <span class="user-feature-icon">🎯</span>
+                                <div><h4>Fokus Praktik</h4><p>Setiap kelas dilengkapi project nyata untuk portofolio.</p></div>
+                            </div>
+                            <div class="user-feature-card">
+                                <span class="user-feature-icon">🤝</span>
+                                <div><h4>Pendampingan</h4><p>Mentor mendampingi selama program berlangsung.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-panel">
+                        <h3>Ringkasan Platform</h3>
+                        <ul class="user-info-list" id="tentangInfo">
+                            <li><span>Kelas E-Learning</span><strong id="tentangKelas">-</strong></li>
+                            <li><span>Program Bootcamp</span><strong id="tentangBootcamp">-</strong></li>
+                            <li><span>Instruktur</span><strong id="tentangInstruktur">-</strong></li>
+                            <li><span>Pengguna Terdaftar</span><strong id="tentangPengguna">-</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CTA ============ -->
+        <section class="user-section user-section-white">
+            <div class="user-container">
+                <div class="user-cta">
+                    <div>
+                        <h2>Siap Mulai Belajar?</h2>
+                        <p>Bangun skill baru dan raih peluang karier bersama BelajarYuk. Pilih kelas favoritmu sekarang.</p>
+                    </div>
+                    <div class="user-cta-actions">
+                        <a href="elearning.html" class="user-btn user-btn-primary user-btn-lg">Mulai Belajar</a>
+                        <a href="bootcamp.html" class="user-btn user-btn-light user-btn-lg">Lihat Bootcamp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="user-footer">
+        <div class="user-container">
+            <div class="user-footer-grid">
+                <div>
+                    <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+                    <p>Platform pembelajaran digital untuk mengembangkan skill yang dibutuhkan industri modern.</p>
+                </div>
+                <div>
+                    <h5>Menu</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="elearning.html">E-Learning</a></li>
+                        <li><a href="bootcamp.html">Bootcamp</a></li>
+                        <li><a href="komunitas.html">Komunitas</a></li>
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Akun</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="../proses/masuk.php">Login</a></li>
+                        <li><a href="../proses/daftar.php">Daftar</a></li>
+                        <li><a href="kelas.html">Kelas Saya</a></li>
+                        <li><a href="riwayat.html">Riwayat Transaksi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Dukungan</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                        <li><a href="index.html#keunggulan">Kenapa BelajarYuk</a></li>
+                        <li><a href="index.html#statistik">Statistik</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-footer-bottom">
+                <span>© 2026 BelajarYuk. Semua hak dilindungi.</span>
+                <span>Dibuat untuk pembelajaran digital Indonesia.</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="../js/image_helper.js"></script>
+<script src="../js/user-app.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/home.js"></script>
+</body>
+</html>

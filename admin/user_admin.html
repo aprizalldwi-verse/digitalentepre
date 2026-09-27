@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pengguna | Admin BelajarYuk</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <style>
+        /* =====================================================
+           DASAR
+        ===================================================== */
+        .user-page {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+        .page-top {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 22px;
+        }
+
+        .page-heading {
+            min-width: 0;
+        }
+
+        .navbar .logo {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -0.6px;
+            color: #0f172a;
+        }
+
+        .navbar .logo span {
+            color: #2563eb;
+        }
+
+        .page-heading .eyebrow {
+            display: inline-block;
+            margin-bottom: 5px;
+            color: #2563eb;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .page-heading h1 {
+            margin: 0;
+            color: #0f172a;
+            font-size: 29px;
+            line-height: 1.2;
+            font-weight: 800;
+            letter-spacing: -0.7px;
+        }
+
+        .page-heading p {
+            margin: 5px 0 0;
+            color: #94a3b8;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        /* =====================================================
+           SUMMARY
+        ===================================================== */
+        .user-summary {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .summary-card {
+            min-width: 0;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 18px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .04);
+        }
+
+        .summary-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .summary-label {
+            color: #94a3b8;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .6px;
+        }
+
+        .summary-icon {
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9px;
+            background: #eef2ff;
+            color: #4338ca;
+            font-size: 14px;
+        }
+
+        .summary-icon.green {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+
+        .summary-icon.red {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .summary-value {
+            margin-top: 10px;
+            color: #0f172a;
+            font-size: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .summary-description {
+            margin-top: 5px;
+            color: #94a3b8;
+            font-size: 10px;
+        }
+
+        /* =====================================================
+           CONTAINER
+        ===================================================== */
+        .user-container {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, .04);
+            overflow: hidden;
+        }
+
+        .user-container-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 22px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .user-title-area {
+            min-width: 0;
+        }
+
+        .user-title-area .small-label {
+            display: block;
+            margin-bottom: 4px;
+            color: #94a3b8;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .6px;
+        }
+
+        .user-title-area h2 {
+            margin: 0;
+            color: #0f172a;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+        .search-box {
+            position: relative;
+            width: 270px;
+            flex-shrink: 0;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 38px;
+            padding: 0 14px 0 38px;
+            box-sizing: border-box;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            outline: none;
+            background: #f8fafc;
+            color: #334155;
+            font-family: inherit;
+            font-size: 11px;
+        }
+
+        .search-box input:focus {
+            background: #ffffff;
+            border-color: #a5b4fc;
+            box-shadow: 0 0 0 3px rgba(67, 56, 202, .08);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 14px;
+            pointer-events: none;
+        }
+
+        /* =====================================================
+           TABLE
+        ===================================================== */
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .table-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table-wrapper thead th {
+            padding: 13px 18px;
+            text-align: left;
+            color: #64748b;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            border-bottom: 1px solid #f1f5f9;
+            background: #f8fafc;
+            white-space: nowrap;
+        }
+
+        .table-wrapper tbody td {
+            padding: 13px 18px;
+            color: #334155;
+            font-size: 12px;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        .table-wrapper tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .table-wrapper tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .empty-data {
+            text-align: center;
+            color: #94a3b8;
+            padding: 40px 18px !important;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           ROLE BADGE
+        ===================================================== */
+        .role-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .3px;
+        }
+
+        .role-badge.admin {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .role-badge.user {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+
+        /* =====================================================
+           ACTIONS
+        ===================================================== */
+        .action-btn {
+            height: 30px;
+            padding: 0 10px;
+            border: 1px solid #fee2e2;
+            border-radius: 8px;
+            background: #fef2f2;
+            color: #dc2626;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .action-btn:hover {
+            background: #fee2e2;
+            transform: translateY(-1px);
+        }
+
+        .action-btn:disabled {
+            opacity: .4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .action-btn-info {
+            height: 30px;
+            padding: 0 10px;
+            border: 1px solid #dbeafe;
+            border-radius: 8px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-family: inherit;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: default;
+        }
+
+        /* =====================================================
+           MODAL KONFIRMASI
+        ===================================================== */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(15, 23, 42, .35);
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: min(420px, 100%);
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, .15);
+            padding: 28px;
+            text-align: center;
+        }
+
+        .modal-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #fef2f2;
+            color: #dc2626;
+            font-size: 24px;
+        }
+
+        .modal-box h3 {
+            margin: 0 0 8px;
+            color: #0f172a;
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .modal-box p {
+            margin: 0 0 22px;
+            color: #64748b;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .modal-cancel {
+            height: 38px;
+            padding: 0 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            background: #ffffff;
+            color: #64748b;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s ease;
+        }
+
+        .modal-cancel:hover {
+            background: #f8fafc;
+        }
+
+        .modal-confirm {
+            height: 38px;
+            padding: 0 18px;
+            border: none;
+            border-radius: 10px;
+            background: #dc2626;
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .modal-confirm:hover {
+            background: #b91c1c;
+            transform: translateY(-1px);
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+        @media (max-width: 768px) {
+            .page-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .user-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .user-container-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="../pages/index.html" class="logo">
+                <span class="logo-accent">BELAJAR</span>YUK
+            </a>
+            <div class="nav-actions">
+                <label class="topbar-search"><i class="fas fa-search"></i><input id="globalSearch" type="search" placeholder="Cari kelas, user, transaksi..." autocomplete="off"><div id="globalSearchResults" class="global-search-results" hidden></div></label>
+                <div class="admin-profile">
+                    <div class="profile-icon">A</div>
+                    <div class="profile-text">
+                        <span class="profile-label">ADMIN</span>
+                        <span class="profile-name">Administrator</span>
+                    </div>
+                </div>
+                <button type="button" class="hamburger" onclick="toggleSidebar()" aria-label="Buka menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================
+         OVERLAY
+    ====================================================== -->
+    <div class="overlay" onclick="closeSidebar()"></div>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-head">
+            <span class="sidebar-tag">ADMIN PANEL</span>
+            <h3>Menu Utama</h3>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.php">
+                <span class="menu-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="elearning_admin.php">
+                <span class="menu-icon">▣</span>
+                E-Learning
+            </a>
+
+            <a href="bootcamp_admin.php">
+                <span class="menu-icon">◆</span>
+                Bootcamp
+            </a>
+
+            <a href="user_admin.php" class="active">
+                <span class="menu-icon">♙</span>
+                Pengguna
+            </a>
+
+            <a href="transaksi_admin.php">
+                <span class="menu-icon">▤</span>
+                Transaksi
+            </a>
+
+            <a href="laporan_admin.php">
+                <span class="menu-icon">&#9649;</span>
+                Laporan
+            </a>
+
+            <a href="operations.php?section=instructors"><span class="menu-icon">♧</span>Guru / Instruktur</a>
+            <a href="operations.php?section=sales"><span class="menu-icon">↗</span>Penjualan</a>
+            <a href="operations.php?section=registrations"><span class="menu-icon">✓</span>Pendaftaran</a>
+            <a href="operations.php?section=finance"><span class="menu-icon">Rp</span>Rekap Keuangan</a>
+            <a href="operations.php?section=calendar"><span class="menu-icon">▦</span>Kalender</a>
+            <a href="operations.php?section=expenses"><span class="menu-icon">−</span>Pengeluaran</a>
+            <a href="operations.php?section=partnerships"><span class="menu-icon">◇</span>Kerjasama</a>
+            <a href="operations.php?section=contacts"><span class="menu-icon">◎</span>Kontak & Sosial Media</a>
+            <a href="operations.php?section=settings"><span class="menu-icon">⚙</span>Pengaturan</a>
+
+            <div class="sidebar-divider"></div>
+
+            <a href="../proses/logout.php" class="logout">
+                <span class="menu-icon">↪</span>
+                Logout Admin
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+    <main class="main-content">
+
+        <section class="user-page">
+
+            <!-- HEADER -->
+            <div class="page-top">
+                <div class="page-heading">
+                    <span class="eyebrow">ADMIN PANEL</span>
+                    <h1>Kelola Pengguna</h1>
+                    <p>Lihat dan kelola seluruh pengguna BelajarYuk.</p>
+                </div>
+            </div>
+
+            <!-- SUMMARY CARDS -->
+            <div class="user-summary">
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">TOTAL PENGGUNA</span>
+                        <div class="summary-icon">US</div>
+                    </div>
+                    <div class="summary-value" id="totalUsers">Memuat...</div>
+                    <div class="summary-description">Seluruh pengguna terdaftar</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">TOTAL ADMIN</span>
+                        <div class="summary-icon red">AD</div>
+                    </div>
+                    <div class="summary-value" id="totalAdmin">Memuat...</div>
+                    <div class="summary-description">Pengguna dengan role admin</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">TOTAL USER BIASA</span>
+                        <div class="summary-icon green">US</div>
+                    </div>
+                    <div class="summary-value" id="totalUserRole">Memuat...</div>
+                    <div class="summary-description">Pengguna dengan role user</div>
+                </div>
+            </div>
+
+            <!-- TABEL PENGGUNA -->
+            <div class="user-container">
+                <div class="user-container-header">
+                    <div class="user-title-area">
+                        <span class="small-label">DATA PENGGUNA</span>
+                        <h2>Daftar Pengguna</h2>
+                    </div>
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="search" id="searchInput" placeholder="Cari nama atau email..." oninput="filterUsers()">
+                    </div>
+                    <select id="roleFilter" onchange="filterUsers()" aria-label="Filter role"><option value="all">Semua role</option><option value="user">User</option><option value="admin">Admin</option></select>
+                    <select id="statusFilter" onchange="filterUsers()" aria-label="Filter status"><option value="all">Semua status</option><option value="active">Aktif</option><option value="inactive">Nonaktif</option></select>
+                    <button class="action-btn" type="button" onclick="createUser()">Tambah Pengguna</button>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID</th>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>No. HP</th>
+                                <th>Role</th>
+                                <th>Status</th>
+                                <th>Tanggal Daftar</th>
+                                <th>Last Login</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTable">
+                            <tr>
+                                <td colspan="9" class="empty-data">Memuat data pengguna...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="user-pagination" id="userPagination" aria-label="Navigasi halaman"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- =====================================================
+     MODAL KONFIRMASI HAPUS
+====================================================== -->
+<div class="modal-overlay" id="deleteModal">
+    <div class="modal-box">
+        <div class="modal-icon">🗑</div>
+        <h3>Hapus Pengguna?</h3>
+        <p id="deleteMessage">Apakah Anda yakin ingin menghapus pengguna ini? Tindakan ini tidak dapat dibatalkan.</p>
+        <div class="modal-actions">
+            <button class="modal-cancel" onclick="closeDeleteModal()">Batal</button>
+            <button class="modal-confirm" id="confirmDeleteBtn" onclick="confirmDelete()">Hapus</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+<script>
+    let allUsers = [];
+    let currentSessionUser = null;
+    let deleteTargetId = null;
+    let currentPage = 1;
+
+    async function loadUsers() {
+        try {
+            const params = new URLSearchParams({search: document.getElementById('searchInput').value, role: document.getElementById('roleFilter').value, status: document.getElementById('statusFilter').value, page: currentPage, per_page: 20});
+            const res = await fetch('../admin-php/user.php?' + params.toString());
+            const json = await res.json();
+
+            if (json.success) {
+                allUsers = json.data;
+                currentSessionUser = json.session_user || null;
+                updateSummary(json.summary);
+                renderTable(allUsers);
+                renderPagination(json.pagination);
+            } else {
+                document.getElementById('userTable').innerHTML =
+                    '<tr><td colspan="9" class="empty-data">' + escapeHtml(json.message) + '</td></tr>';
+            }
+        } catch (e) {
+            document.getElementById('userTable').innerHTML =
+                '<tr><td colspan="9" class="empty-data">Gagal memuat data.</td></tr>';
+        }
+    }
+
+    function updateSummary(summary) {
+        document.getElementById('totalUsers').textContent = Number(summary.total).toLocaleString('id-ID');
+        document.getElementById('totalAdmin').textContent = Number(summary.admins).toLocaleString('id-ID');
+        document.getElementById('totalUserRole').textContent = Number(summary.users).toLocaleString('id-ID');
+    }
+
+    function renderPagination(pagination) {
+        const nav = document.getElementById('userPagination');
+        if (!pagination || pagination.pages <= 1) { nav.innerHTML = ''; return; }
+        nav.innerHTML = '<button type="button" '+(pagination.page<=1?'disabled':'')+' onclick="changeUserPage('+(pagination.page-1)+')">Sebelumnya</button><span>Halaman '+pagination.page+' dari '+pagination.pages+' · '+pagination.total+' user</span><button type="button" '+(pagination.page>=pagination.pages?'disabled':'')+' onclick="changeUserPage('+(pagination.page+1)+')">Berikutnya</button>';
+    }
+
+    function changeUserPage(page) {
+        currentPage = Math.max(1, Number(page) || 1);
+        loadUsers();
+    }
+
+    function renderTable(data) {
+        const tbody = document.getElementById('userTable');
+
+        if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="9" class="empty-data">Tidak ada pengguna ditemukan.</td></tr>';
+            return;
+        }
+
+        tbody.innerHTML = data.map((u, i) => {
+            const isOwn = (currentSessionUser && u.id == currentSessionUser.id);
+            const date = u.created_at ? new Date(u.created_at).toLocaleDateString('id-ID', {
+                day: 'numeric', month: 'short', year: 'numeric'
+            }) : '-';
+
+            return '<tr>' +
+                '<td>' + (i + 1) + '</td>' +
+                '<td>' + Number(u.id) + '</td>' +
+                '<td><strong>' + escapeHtml(u.nama) + '</strong></td>' +
+                '<td>' + escapeHtml(u.email) + '</td>' +
+                '<td>' + escapeHtml(u.phone || '-') + '</td>' +
+                '<td><span class="role-badge ' + u.role + '">' + u.role + '</span></td>' +
+                '<td>' + escapeHtml(u.status === 'active' ? 'Aktif' : 'Nonaktif') + '</td>' +
+                '<td>' + date + '</td>' +
+                '<td>' + escapeHtml(u.last_login || '-') + '</td>' +
+                '<td>' +
+                    '<button class="action-btn" onclick="showUserDetail(' + u.id + ')">Detail</button> ' +
+                    '<button class="action-btn" onclick="editUser(' + u.id + ')" ' + (isOwn ? 'disabled' : '') + '>Edit</button> ' +
+                        '<button class="action-btn" onclick="openDeleteModal(' + u.id + ')" ' +
+                        (isOwn ? 'disabled title="Tidak dapat menghapus akun sendiri"' : '') +
+                    '>Hapus</button>' +
+                '</td>' +
+            '</tr>';
+        }).join('');
+    }
+
+    function filterUsers() {
+        currentPage = 1;
+        loadUsers();
+    }
+
+    async function showUserDetail(id) {
+        const response = await fetch('../admin-php/user.php?id=' + encodeURIComponent(id));
+        const result = await response.json();
+        if (!result.success) return alert(result.message || 'Detail user tidak tersedia.');
+        const user = result.data;
+        alert('ID: ' + user.id + '\nNama: ' + user.nama + '\nEmail: ' + user.email + '\nNo. HP: ' + (user.phone || '-') + '\nRole: ' + user.role + '\nStatus: ' + user.status + '\nTanggal registrasi: ' + user.created_at + '\nLast login: ' + (user.last_login || '-'));
+    }
+
+    async function editUser(id) {
+        const user = allUsers.find(item => Number(item.id) === Number(id));
+        if (!user) return;
+        const nama = prompt('Nama', user.nama); if (nama === null) return;
+        const email = prompt('Email', user.email); if (email === null) return;
+        const role = prompt('Role (user/admin)', user.role); if (role === null) return;
+        const status = prompt('Status (active/inactive)', user.status); if (status === null) return;
+        const response = await fetch('../admin-php/user.php', {method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,nama:nama,email:email,role:role,status:status})});
+        const json = await response.json();
+        if (!json.success) return alert(json.message || 'Gagal memperbarui pengguna.');
+        loadUsers();
+    }
+
+    async function createUser() {
+        const nama = prompt('Nama pengguna'); if (nama === null || !nama.trim()) return;
+        const email = prompt('Email pengguna'); if (email === null) return;
+        const password = prompt('Password sementara (minimal 8 karakter)'); if (password === null) return;
+        const role = prompt('Role (user/admin)', 'user'); if (role === null) return;
+        const response = await fetch('../admin-php/user.php', {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nama:nama,email:email,password:password,role:role,status:'active'})});
+        const json = await response.json();
+        if (!json.success) return alert(json.message || 'Gagal menambahkan pengguna.');
+        loadUsers();
+    }
+
+    function openDeleteModal(id) {
+        deleteTargetId = id;
+        const user = allUsers.find(item => Number(item.id) === Number(id));
+        const name = user ? user.nama : '';
+        document.getElementById('deleteMessage').textContent =
+            'Apakah Anda yakin ingin menghapus pengguna "' + name + '"? Tindakan ini tidak dapat dibatalkan.';
+        document.getElementById('deleteModal').classList.add('show');
+    }
+
+    function closeDeleteModal() {
+        deleteTargetId = null;
+        document.getElementById('deleteModal').classList.remove('show');
+    }
+
+    async function confirmDelete() {
+        if (!deleteTargetId) return;
+
+        try {
+            const res = await fetch('../admin-php/user.php', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: deleteTargetId })
+            });
+            const json = await res.json();
+
+            if (json.success) {
+                closeDeleteModal();
+                loadUsers();
+            } else {
+                alert(json.message || 'Gagal menghapus pengguna.');
+            }
+        } catch (e) {
+            alert('Terjadi kesalahan saat menghapus pengguna.');
+        }
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text || '';
+        return div.innerHTML;
+    }
+
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('open');
+        document.querySelector('.overlay').classList.toggle('show');
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('open');
+        document.querySelector('.overlay').classList.remove('show');
+    }
+
+    loadUsers();
+</script>
+    <script src="../js/image_helper.js"></script>
+    <script src="../js/admin_global_search.js"></script>
+
+
+</body>
+
+</html>

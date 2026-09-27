@@ -1,0 +1,30 @@
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
+*~
+
+# --- Node (generate_thumbnails.js) ---
+node_modules/
+package-lock.json
+npm-debug.log*
+
+# --- Log & file sementara ---
+*.log
+*.tmp
+~$*
+*.bak
+
+# --- Rahasia / kredensial (dibuat lokal, tidak di-commit) ---
+proses/midtrans_keys.php
+.env
+.env.*
+
+# --- File uji / artefak sementara ---
+_test.php
+test_*.js
+_tmp*
+cleanup_tester.php

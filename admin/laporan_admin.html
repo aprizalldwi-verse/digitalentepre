@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan | Admin BelajarYuk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        .laporan-page{width:100%;max-width:100%;margin:0 auto}
+        .page-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:22px}
+        .page-heading{min-width:0}
+        .page-heading .eyebrow{display:inline-block;margin-bottom:5px;color:#2563eb;font-size:10px;font-weight:800;letter-spacing:1px}
+        .page-heading h1{margin:0;color:#0f172a;font-size:29px;line-height:1.2;font-weight:800;letter-spacing:-0.7px}
+        .page-heading p{margin:5px 0 0;color:#94a3b8;font-size:13px;line-height:1.5}
+        .page-actions{display:flex;gap:10px;flex-shrink:0}
+        .btn-print{height:40px;padding:0 22px;border:none;border-radius:10px;background:#2563eb;color:#fff;font-family:inherit;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:all .2s ease;white-space:nowrap}
+        .btn-print:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,.3)}
+        .btn-apply{height:38px;padding:0 20px;border:none;border-radius:10px;background:#4338ca;color:#fff;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s ease;white-space:nowrap}
+        .btn-apply:hover{background:#3730a3;transform:translateY(-1px)}
+        .filter-section{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:20px 22px;margin-bottom:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+        .filter-row{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+        .filter-group{display:flex;flex-direction:column;gap:6px;min-width:0}
+        .filter-group label{color:#64748b;font-size:10px;font-weight:700;letter-spacing:.4px}
+        .filter-group select,.filter-group input{height:38px;padding:0 14px;border:1px solid #e2e8f0;border-radius:10px;background:#f8fafc;color:#334155;font-family:inherit;font-size:12px;outline:none;min-width:160px}
+        .filter-group select:focus,.filter-group input:focus{background:#fff;border-color:#a5b4fc;box-shadow:0 0 0 3px rgba(67,56,202,.08)}
+        .filter-group input[type="date"]{min-width:155px}
+        .filter-group.custom-date{display:none}
+        .filter-group.custom-date.show{display:flex}
+        .filter-actions{display:flex;gap:10px;align-items:flex-end}
+        .laporan-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:18px}
+        .summary-card{min-width:0;background:#fff;border:1px solid #e2e8f0;border-radius:15px;padding:18px;box-shadow:0 1px 3px rgba(15,23,42,.04)}
+        .summary-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+        .summary-label{color:#94a3b8;font-size:10px;font-weight:700;letter-spacing:.6px}
+        .summary-icon{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:9px;background:#eef2ff;color:#4338ca;font-size:14px}
+        .summary-icon.green{background:#f0fdf4;color:#16a34a}
+        .summary-icon.blue{background:#eff6ff;color:#2563eb}
+        .summary-icon.purple{background:#f5f3ff;color:#7c3aed}
+        .summary-value{margin-top:10px;color:#0f172a;font-size:20px;line-height:1.2;font-weight:800}
+        .summary-description{margin-top:5px;color:#94a3b8;font-size:10px}
+        .laporan-container{width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:16px;box-shadow:0 1px 3px rgba(15,23,42,.04);overflow:hidden}
+        .laporan-container-header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:18px 22px;border-bottom:1px solid #f1f5f9}
+        .laporan-title-area .small-label{display:block;margin-bottom:4px;color:#94a3b8;font-size:9px;font-weight:700;letter-spacing:.6px}
+        .laporan-title-area h2{margin:0;color:#0f172a;font-size:17px;font-weight:800}
+        .table-wrapper{overflow-x:auto}
+        .table-wrapper table{width:100%;border-collapse:collapse}
+        .table-wrapper thead th{padding:13px 18px;text-align:left;color:#64748b;font-size:10px;font-weight:700;letter-spacing:.4px;border-bottom:1px solid #f1f5f9;background:#f8fafc;white-space:nowrap}
+        .table-wrapper tbody td{padding:13px 18px;color:#334155;font-size:12px;border-bottom:1px solid #f8fafc}
+        .table-wrapper tbody tr:hover{background:#f8fafc}
+        .table-wrapper tbody tr:last-child td{border-bottom:none}
+        .empty-data{text-align:center;color:#94a3b8;padding:40px 18px !important;font-size:13px}
+        .status-badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+        .status-badge.paid,.status-badge.settlement{background:#f0fdf4;color:#16a34a}
+        .status-badge.pending{background:#fefce8;color:#ca8a04}
+        .status-badge.expired,.status-badge.expire{background:#fef2f2;color:#dc2626}
+        .status-badge.dibatalkan,.status-badge.cancel{background:#fef2f2;color:#dc2626}
+        .status-badge.ditolak,.status-badge.deny{background:#fef2f2;color:#dc2626}
+        .jenis-badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+        .jenis-badge.elearning{background:#eff6ff;color:#2563eb}
+        .jenis-badge.bootcamp{background:#f5f3ff;color:#7c3aed}
+        .total-bar{display:flex;justify-content:flex-end;align-items:center;padding:16px 22px;background:#f8fafc;border-top:2px solid #e2e8f0;gap:24px;flex-wrap:wrap}
+        .total-bar-item{display:flex;align-items:center;gap:8px}
+        .total-bar-label{color:#64748b;font-size:11px;font-weight:700}
+        .total-bar-value{color:#0f172a;font-size:13px;font-weight:800}
+        .total-bar-value.highlight{color:#2563eb;font-size:15px}
+        @media(max-width:768px){.page-top{flex-direction:column;align-items:flex-start}.laporan-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.filter-row{flex-direction:column;align-items:stretch}.filter-group select,.filter-group input{min-width:100%}.laporan-container-header{flex-direction:column;align-items:flex-start}.total-bar{flex-direction:column;align-items:flex-start}}
+        @media(max-width:480px){.laporan-summary{grid-template-columns:1fr}}
+        @media print{*{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}body{font-size:11px;color:#000;background:#fff}.page-wrapper{display:none !important}.no-print{display:none !important}#printArea{display:block !important;padding:0;margin:0}#printArea .print-header{text-align:center;margin-bottom:20px;padding-bottom:15px;border-bottom:3px solid #000}#printArea .print-header h1{font-size:22px;margin:0 0 5px;letter-spacing:2px}#printArea .print-header h2{font-size:16px;margin:0 0 10px;font-weight:600}#printArea .print-header p{font-size:11px;margin:3px 0;color:#333}#printArea .print-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px;padding:12px;border:1px solid #ccc;border-radius:4px}#printArea .print-summary-item{text-align:center}#printArea .print-summary-item .label{font-size:9px;color:#666;font-weight:700;text-transform:uppercase;letter-spacing:.5px}#printArea .print-summary-item .value{font-size:16px;font-weight:800;margin-top:4px}#printArea table{width:100%;border-collapse:collapse;margin-bottom:15px;font-size:10px}#printArea table th{background:#f0f0f0;padding:8px 10px;text-align:left;font-size:9px;font-weight:700;border:1px solid #ccc;text-transform:uppercase;letter-spacing:.3px}#printArea table td{padding:7px 10px;border:1px solid #ddd;font-size:10px}#printArea table tr:nth-child(even){background:#fafafa}#printArea .print-total{display:flex;justify-content:flex-end;padding:12px 15px;border:2px solid #000;border-radius:4px;margin-bottom:25px;font-weight:700;font-size:12px;gap:24px}#printArea .print-total .total-item{display:flex;gap:8px}#printArea .print-total .total-label{color:#333}#printArea .print-total .total-value{font-weight:800}#printArea .print-footer{margin-top:30px;padding-top:15px;border-top:1px solid #ccc;display:flex;justify-content:space-between;font-size:10px}#printArea .print-footer .footer-left{color:#333}#printArea .print-footer .footer-right{text-align:right;color:#666}#printArea .print-footer .signature{margin-top:40px;text-align:left;font-size:10px;color:#333}#printArea .print-footer .signature .line{display:inline-block;width:150px;border-bottom:1px solid #000;margin-top:50px}}
+        #printArea{display:none}
+    </style>
+</head>
+
+<body>
+
+<div class="page-wrapper no-print">
+    <header class="navbar">
+        <div class="navbar-container">
+            <a href="../pages/index.html" class="logo"><span class="logo-accent">BELAJAR</span>YUK</a>
+            <div class="nav-actions">
+                <label class="topbar-search"><i class="fas fa-search"></i><input id="globalSearch" type="search" placeholder="Cari kelas, user, transaksi..." autocomplete="off"><div id="globalSearchResults" class="global-search-results" hidden></div></label>
+                <div class="admin-profile">
+                    <div class="profile-icon">A</div>
+                    <div class="profile-text">
+                        <span class="profile-label">ADMIN</span>
+                        <span class="profile-name">Administrator</span>
+                    </div>
+                </div>
+                <button type="button" class="hamburger" onclick="toggleSidebar()" aria-label="Buka menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="overlay" onclick="closeSidebar()"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head">
+            <span class="sidebar-tag">ADMIN PANEL</span>
+            <h3>Menu Utama</h3>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="dashboard.php"><span class="menu-icon">&#8962;</span>Dashboard</a>
+            <a href="elearning_admin.php"><span class="menu-icon">&#9635;</span>E-Learning</a>
+            <a href="bootcamp_admin.php"><span class="menu-icon">&#9670;</span>Bootcamp</a>
+            <a href="user_admin.php"><span class="menu-icon">&#9819;</span>Pengguna</a>
+            <a href="transaksi_admin.php"><span class="menu-icon">&#9644;</span>Transaksi</a>
+            <a href="laporan_admin.php" class="active"><span class="menu-icon">&#9649;</span>Laporan</a>
+            <a href="operations.php?section=instructors"><span class="menu-icon">♧</span>Guru / Instruktur</a>
+            <a href="operations.php?section=sales"><span class="menu-icon">↗</span>Penjualan</a>
+            <a href="operations.php?section=registrations"><span class="menu-icon">✓</span>Pendaftaran</a>
+            <a href="operations.php?section=finance"><span class="menu-icon">Rp</span>Rekap Keuangan</a>
+            <a href="operations.php?section=calendar"><span class="menu-icon">▦</span>Kalender</a>
+            <a href="operations.php?section=expenses"><span class="menu-icon">−</span>Pengeluaran</a>
+            <a href="operations.php?section=partnerships"><span class="menu-icon">◇</span>Kerjasama</a>
+            <a href="operations.php?section=contacts"><span class="menu-icon">◎</span>Kontak &amp; Sosial Media</a>
+            <a href="operations.php?section=settings"><span class="menu-icon">⚙</span>Pengaturan</a>
+            <div class="sidebar-divider"></div>
+            <a href="../proses/logout.php" class="logout"><span class="menu-icon">&#8626;</span>Logout Admin</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <section class="laporan-page">
+            <div class="page-top">
+                <div class="page-heading">
+                    <span class="eyebrow">ADMIN PANEL</span>
+                    <h1>Laporan Penjualan</h1>
+                    <p>Lihat dan cetak laporan penjualan BelajarYuk.</p>
+                </div>
+                <div class="page-actions">
+                    <button type="button" class="btn-print" data-report-export="pdf">PDF</button>
+                    <button type="button" class="btn-print" data-report-export="csv">CSV</button>
+                    <button type="button" class="btn-print" data-report-export="xlsx">EXCEL</button>
+                    <button type="button" class="btn-print" data-report-export="print">PRINT</button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-row">
+                    <div class="filter-group">
+                        <label>PERIODE</label>
+                        <select id="filterPeriode" onchange="handlePeriodeChange()">
+                            <option value="semua">Semua</option>
+                            <option value="hari_ini">Hari Ini</option>
+                            <option value="kemarin">Kemarin</option>
+                            <option value="last7">7 Hari Terakhir</option>
+                            <option value="last30">30 Hari Terakhir</option>
+                            <option value="minggu_ini">Minggu Ini</option>
+                            <option value="bulan_ini" selected>Bulan Ini</option>
+                            <option value="bulan_lalu">Bulan Lalu</option>
+                            <option value="tahun_ini">Tahun Ini</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="filter-group custom-date" id="customDateGroup">
+                        <label>TANGGAL MULAI</label>
+                        <input type="date" id="filterTglMulai" value="">
+                    </div>
+                    <div class="filter-group custom-date" id="customDateGroup2">
+                        <label>TANGGAL AKHIR</label>
+                        <input type="date" id="filterTglAkhir" value="">
+                    </div>
+                    <div class="filter-group">
+                        <label>JENIS PRODUK</label>
+                        <select id="filterJenis">
+                            <option value="semua">Semua</option>
+                            <option value="elearning">E-Learning</option>
+                            <option value="bootcamp">Bootcamp</option>
+                        </select>
+                    </div>
+                    <div class="filter-actions">
+                        <button type="button" class="btn-apply" onclick="loadLaporan()">Tampilkan Laporan</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="laporan-summary">
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">TOTAL TRANSAKSI</span>
+                        <div class="summary-icon">TR</div>
+                    </div>
+                    <div class="summary-value" id="totalTransaksi">0</div>
+                    <div class="summary-description">Seluruh transaksi</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">E-LEARNING TERJUAL</span>
+                        <div class="summary-icon blue">EL</div>
+                    </div>
+                    <div class="summary-value" id="totalElearning">0</div>
+                    <div class="summary-description">Transaksi e-learning</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">BOOTCAMP TERJUAL</span>
+                        <div class="summary-icon purple">BC</div>
+                    </div>
+                    <div class="summary-value" id="totalBootcamp">0</div>
+                    <div class="summary-description">Transaksi bootcamp</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top">
+                        <span class="summary-label">TOTAL PENDAPATAN</span>
+                        <div class="summary-icon green">Rp</div>
+                    </div>
+                    <div class="summary-value" id="totalPendapatan">Rp 0</div>
+                    <div class="summary-description">Dari transaksi berhasil</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top"><span class="summary-label">TOTAL PENGELUARAN</span><div class="summary-icon">-Rp</div></div>
+                    <div class="summary-value" id="totalPengeluaran">Rp 0</div>
+                    <div class="summary-description">Dari catatan pengeluaran</div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-top"><span class="summary-label">PROFIT BERSIH</span><div class="summary-icon green">NET</div></div>
+                    <div class="summary-value" id="profitBersih">Rp 0</div>
+                    <div class="summary-description">Pemasukan dikurangi pengeluaran</div>
+                </div>
+            </div>
+
+            <div class="laporan-container">
+                <div class="laporan-container-header">
+                    <div class="laporan-title-area">
+                        <span class="small-label">DATA LAPORAN</span>
+                        <h2>Riwayat Transaksi</h2>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>ID</th>
+                                <th>Tanggal</th>
+                                <th>Pembeli</th>
+                                <th>Email</th>
+                                <th>Produk</th>
+                                <th>Kategori</th>
+                                <th>Jenis</th>
+                                <th>Harga</th>
+                                <th>Metode Pembayaran</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="laporanTable">
+                            <tr><td colspan="11" class="empty-data">Memuat data laporan...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="total-bar" id="totalBar" style="display:none">
+                    <div class="total-bar-item">
+                        <span class="total-bar-label">Total Transaksi:</span>
+                        <span class="total-bar-value" id="barTotalTransaksi">0</span>
+                    </div>
+                    <div class="total-bar-item">
+                        <span class="total-bar-label">E-Learning:</span>
+                        <span class="total-bar-value" id="barTotalElearning">0</span>
+                    </div>
+                    <div class="total-bar-item">
+                        <span class="total-bar-label">Bootcamp:</span>
+                        <span class="total-bar-value" id="barTotalBootcamp">0</span>
+                    </div>
+                    <div class="total-bar-item">
+                        <span class="total-bar-label">Total Pendapatan:</span>
+                        <span class="total-bar-value highlight" id="barTotalPendapatan">Rp 0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="printArea"></div>
+
+<script>
+var currentData = [];
+var currentSummary = {};
+var currentFilters = {};
+
+function formatRupiah(num) {
+    return 'Rp ' + Number(num || 0).toLocaleString('id-ID');
+}
+
+function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text || '';
+    return div.innerHTML;
+}
+
+function handlePeriodeChange() {
+    var val = document.getElementById('filterPeriode').value;
+    var g1 = document.getElementById('customDateGroup');
+    var g2 = document.getElementById('customDateGroup2');
+    if (val === 'custom') {
+        g1.classList.add('show');
+        g2.classList.add('show');
+    } else {
+        g1.classList.remove('show');
+        g2.classList.remove('show');
+    }
+}
+
+function getFilterParams() {
+    var periode = document.getElementById('filterPeriode').value;
+    var jenis = document.getElementById('filterJenis').value;
+    var tglMulai = document.getElementById('filterTglMulai').value;
+    var tglAkhir = document.getElementById('filterTglAkhir').value;
+    var params = 'periode=' + encodeURIComponent(periode) + '&jenis=' + encodeURIComponent(jenis);
+    if (periode === 'custom' && tglMulai && tglAkhir) {
+        params += '&tgl_mulai=' + encodeURIComponent(tglMulai) + '&tgl_akhir=' + encodeURIComponent(tglAkhir);
+    }
+    return params;
+}
+
+function getPeriodeLabel() {
+    var val = document.getElementById('filterPeriode').value;
+    var labels = {
+        'semua': 'Semua Periode',
+        'hari_ini': 'Hari Ini',
+        'minggu_ini': 'Minggu Ini',
+        'bulan_ini': 'Bulan Ini',
+        'tahun_ini': 'Tahun Ini',
+        'custom': ''
+    };
+    if (val === 'custom') {
+        var s = document.getElementById('filterTglMulai').value;
+        var e = document.getElementById('filterTglAkhir').value;
+        if (s && e) {
+            var sd = new Date(s);
+            var ed = new Date(e);
+            return sd.toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'}) + ' s/d ' + ed.toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'});
+        }
+        return 'Custom Periode';
+    }
+    return labels[val] || 'Semua Periode';
+}
+
+async function loadLaporan() {
+    var params = getFilterParams();
+    try {
+        var res = await fetch('../admin-php/laporan.php?' + params);
+        var json = await res.json();
+        if (json.success) {
+            currentData = json.data;
+            currentSummary = json.summary;
+            currentFilters = json.filters;
+            updateSummaryCards(json.summary);
+            renderTable(json.data);
+        } else {
+            document.getElementById('laporanTable').innerHTML =
+                '<tr><td colspan="11" class="empty-data">' + escapeHtml(json.message) + '</td></tr>';
+            hideTotalBar();
+        }
+    } catch (e) {
+        console.error('Laporan error:', e);
+        document.getElementById('laporanTable').innerHTML =
+            '<tr><td colspan="11" class="empty-data">Gagal memuat data laporan.</td></tr>';
+        hideTotalBar();
+    }
+}
+
+function updateSummaryCards(s) {
+    document.getElementById('totalTransaksi').textContent = s.total_transaksi;
+    document.getElementById('totalElearning').textContent = s.total_elearning;
+    document.getElementById('totalBootcamp').textContent = s.total_bootcamp;
+    document.getElementById('totalPendapatan').textContent = formatRupiah(s.total_pendapatan);
+    document.getElementById('totalPengeluaran').textContent = formatRupiah(s.total_pengeluaran);
+    document.getElementById('profitBersih').textContent = formatRupiah(s.profit_bersih);
+    document.getElementById('barTotalTransaksi').textContent = s.total_transaksi;
+    document.getElementById('barTotalElearning').textContent = s.total_elearning;
+    document.getElementById('barTotalBootcamp').textContent = s.total_bootcamp;
+    document.getElementById('barTotalPendapatan').textContent = formatRupiah(s.total_pendapatan);
+    document.getElementById('totalBar').style.display = s.total_transaksi > 0 ? 'flex' : 'none';
+}
+
+function hideTotalBar() {
+    document.getElementById('totalBar').style.display = 'none';
+    document.getElementById('totalTransaksi').textContent = '0';
+    document.getElementById('totalElearning').textContent = '0';
+    document.getElementById('totalBootcamp').textContent = '0';
+    document.getElementById('totalPendapatan').textContent = 'Rp 0';
+    document.getElementById('totalPengeluaran').textContent = 'Rp 0';
+    document.getElementById('profitBersih').textContent = 'Rp 0';
+}
+
+function renderTable(data) {
+    var tbody = document.getElementById('laporanTable');
+    if (!data || data.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="11" class="empty-data">Tidak ada transaksi pada periode yang dipilih.</td></tr>';
+        return;
+    }
+    var html = '';
+    for (var i = 0; i < data.length; i++) {
+        var t = data[i];
+        var statusClass = t.status_raw || 'pending';
+        var jenisClass = (t.jenis || '').toLowerCase();
+        html += '<tr>' +
+            '<td>' + (i + 1) + '</td>' +
+            '<td>' + Number(t.id) + '</td>' +
+            '<td>' + escapeHtml(t.tanggal) + '</td>' +
+            '<td>' + escapeHtml(t.pembeli) + '</td>' +
+            '<td>' + escapeHtml(t.email) + '</td>' +
+            '<td>' + escapeHtml(t.produk) + '</td>' +
+            '<td>' + escapeHtml(t.kategori) + '</td>' +
+            '<td><span class="jenis-badge ' + jenisClass + '">' + escapeHtml(t.jenis) + '</span></td>' +
+            '<td>' + formatRupiah(t.harga) + '</td>' +
+            '<td>' + escapeHtml(t.payment_type) + '</td>' +
+            '<td><span class="status-badge ' + statusClass + '">' + escapeHtml(t.status) + '</span></td>' +
+            '</tr>';
+    }
+    tbody.innerHTML = html;
+}
+
+function buildPrintContent() {
+    var periodeLabel = getPeriodeLabel();
+    var now = new Date();
+    var printDate = now.toLocaleDateString('id-ID', {day:'numeric',month:'long',year:'numeric'}) + ', ' + now.toLocaleTimeString('id-ID', {hour:'2-digit',minute:'2-digit'});
+    var jenisLabel = document.getElementById('filterJenis').value;
+    var jenisText = 'Semua';
+    if (jenisLabel === 'elearning') jenisText = 'E-Learning';
+    if (jenisLabel === 'bootcamp') jenisText = 'Bootcamp';
+
+    var tableRows = '';
+    for (var i = 0; i < currentData.length; i++) {
+        var t = currentData[i];
+        tableRows += '<tr>' +
+            '<td>' + (i+1) + '</td>' +
+            '<td>' + escapeHtml(t.tanggal) + '</td>' +
+            '<td>' + escapeHtml(t.pembeli) + '</td>' +
+            '<td>' + escapeHtml(t.produk) + '</td>' +
+            '<td>' + escapeHtml(t.kategori) + '</td>' +
+            '<td>' + escapeHtml(t.jenis) + '</td>' +
+            '<td>' + formatRupiah(t.harga) + '</td>' +
+            '<td>' + escapeHtml(t.status) + '</td>' +
+            '<td>' + formatRupiah(t.harga) + '</td>' +
+            '</tr>';
+    }
+
+    var html = '<div class="print-header">' +
+        '<h1>BELAJARYUK</h1>' +
+        '<h2>LAPORAN PENJUALAN</h2>' +
+        '<p>Periode: ' + escapeHtml(periodeLabel) + '</p>' +
+        '<p>Jenis: ' + escapeHtml(jenisText) + '</p>' +
+        '</div>' +
+        '<div class="print-summary">' +
+        '<div class="print-summary-item"><div class="label">Total Transaksi</div><div class="value">' + currentSummary.total_transaksi + '</div></div>' +
+        '<div class="print-summary-item"><div class="label">E-Learning</div><div class="value">' + currentSummary.total_elearning + '</div></div>' +
+        '<div class="print-summary-item"><div class="label">Bootcamp</div><div class="value">' + currentSummary.total_bootcamp + '</div></div>' +
+        '<div class="print-summary-item"><div class="label">Total Pendapatan</div><div class="value">' + formatRupiah(currentSummary.total_pendapatan) + '</div></div>' +
+        '</div>' +
+        '<table>' +
+        '<thead><tr>' +
+        '<th>No</th><th>Tanggal</th><th>Pembeli</th><th>Produk</th><th>Kategori</th><th>Jenis</th><th>Harga</th><th>Status</th><th>Total</th>' +
+        '</tr></thead>' +
+        '<tbody>' + (tableRows || '<tr><td colspan="9" style="text-align:center;padding:20px">Tidak ada data</td></tr>') + '</tbody>' +
+        '</table>' +
+        '<div class="print-total">' +
+        '<div class="total-item"><span class="total-label">Total Transaksi:</span> <span class="total-value">' + currentSummary.total_transaksi + '</span></div>' +
+        '<div class="total-item"><span class="total-label">E-Learning:</span> <span class="total-value">' + currentSummary.total_elearning + '</span></div>' +
+        '<div class="total-item"><span class="total-label">Bootcamp:</span> <span class="total-value">' + currentSummary.total_bootcamp + '</span></div>' +
+        '<div class="total-item"><span class="total-label">Total Pendapatan:</span> <span class="total-value">' + formatRupiah(currentSummary.total_pendapatan) + '</span></div>' +
+        '</div>' +
+        '<div class="print-footer">' +
+        '<div class="footer-left">' +
+        '<p><strong>Belajaryuk</strong></p>' +
+        '<div class="signature">' +
+        '<p>Mengetahui,</p>' +
+        '<p>Administrator</p>' +
+        '<span class="line"></span>' +
+        '</div>' +
+        '</div>' +
+        '<div class="footer-right">' +
+        '<p>Dicetak oleh: Administrator</p>' +
+        '<p>Tanggal cetak: ' + printDate + '</p>' +
+        '</div>' +
+        '</div>';
+
+    return html;
+}
+
+function printLaporan() {
+    if (currentData.length === 0) {
+        alert('Tidak ada data untuk dicetak. Silakan tampilkan laporan terlebih dahulu.');
+        return;
+    }
+    var printArea = document.getElementById('printArea');
+    printArea.innerHTML = buildPrintContent();
+    window.print();
+}
+
+function exportReport(format) {
+    var params = new URLSearchParams(getFilterParams());
+    params.set('format', format);
+    params.set('mode', 'sales');
+    var url = '../admin-php/report_export.php?' + params.toString();
+    if (format === 'print') window.open(url, '_blank', 'noopener');
+    else window.location.href = url;
+}
+
+document.querySelectorAll('[data-report-export]').forEach(function(button){
+    button.addEventListener('click', function(){ exportReport(button.dataset.reportExport); });
+});
+
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.querySelector('.overlay').classList.toggle('show');
+}
+
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.querySelector('.overlay').classList.remove('show');
+}
+
+loadLaporan();
+</script>
+    <script src="../js/image_helper.js"></script>
+    <script src="../js/admin_global_search.js"></script>
+
+</body>
+</html>

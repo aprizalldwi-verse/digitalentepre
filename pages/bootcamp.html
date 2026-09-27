@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp Intensif — BelajarYuk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/user-frontend.css">
+</head>
+<body>
+<div class="user-frontend" id="userFrontend">
+
+    <header class="user-navbar">
+        <div class="user-container user-navbar-inner">
+            <a class="user-brand" href="index.html"><span class="user-brand-badge">🎓</span> BelajarYuk</a>
+            <ul class="user-nav-menu">
+                <li><a href="index.html" data-nav="beranda">Beranda</a></li>
+                <li><a href="elearning.html" data-nav="elearning">E-Learning</a></li>
+                <li><a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a></li>
+                <li><a href="index.html#tentang" data-nav="tentang">Tentang Kami</a></li>
+            </ul>
+            <form class="user-nav-search" data-user-search data-search-target="bootcamp.html" role="search">
+                <span class="user-nav-search-icon">🔍</span>
+                <input type="search" name="q" placeholder="Cari kelas, instruktur atau topik..." aria-label="Cari kelas">
+            </form>
+            <div class="user-nav-actions" id="userNavActions">
+                <a href="../proses/masuk.php" class="user-btn user-btn-ghost">Login</a>
+                <a href="../proses/daftar.php" class="user-btn user-btn-primary">Daftar</a>
+                <button class="user-hamburger" id="userHamburger" type="button" aria-label="Buka menu">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="user-overlay" id="userOverlay"></div>
+    <aside class="user-sidebar" id="userSidebar">
+        <div class="user-sidebar-head">
+            <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+            <button class="user-sidebar-close" id="userSidebarClose" type="button" aria-label="Tutup menu">✕</button>
+        </div>
+        <nav>
+            <a href="index.html" data-nav="beranda">Beranda</a>
+            <a href="elearning.html" data-nav="elearning">E-Learning</a>
+            <a href="bootcamp.html" data-nav="bootcamp">Bootcamp</a>
+            <a href="riwayat.html" data-nav="riwayat">Riwayat</a>
+            <a href="kelas.html" data-nav="kelas">Kelas Saya</a>
+            <a href="index.html#tentang">Tentang Kami</a>
+        </nav>
+        <div class="user-sidebar-user" id="userSidebarUser"></div>
+        <div class="user-sidebar-auth" id="userSidebarAuth">
+            <a href="../proses/masuk.php" class="user-btn user-btn-primary user-btn-block">Login</a>
+            <a href="../proses/daftar.php" class="user-btn user-btn-outline user-btn-block">Daftar Gratis</a>
+        </div>
+    </aside>
+
+    <main>
+        <section class="user-page-hero">
+            <div class="user-container">
+                <div class="user-breadcrumb" style="padding-top:0;padding-bottom:14px">
+                    <a href="index.html">Beranda</a> <span>→</span> <span>Bootcamp</span>
+                </div>
+                <h1>Program Bootcamp Intensif</h1>
+                <p>Program intensif dengan mentor berpengalaman untuk membangun skill profesional dan siap kerja.</p>
+            </div>
+        </section>
+
+        <div class="user-container">
+            <div class="user-toolbar">
+                <div class="user-toolbar-search">
+                    <span class="user-nav-search-icon" style="left:15px">🔍</span>
+                    <input type="search" id="searchBootcamp" placeholder="Cari bootcamp, mentor, atau topik..." aria-label="Cari bootcamp">
+                </div>
+                <select class="user-toolbar-select" id="sortBootcamp" aria-label="Urutkan">
+                    <option value="terbaru">Terbaru</option>
+                    <option value="terdekat">Jadwal Terdekat</option>
+                    <option value="terpopuler">Terpopuler</option>
+                    <option value="harga_asc">Harga: Rendah ke Tinggi</option>
+                    <option value="harga_desc">Harga: Tinggi ke Rendah</option>
+                </select>
+            </div>
+
+            <div class="user-catalog">
+                <aside class="user-filter-panel">
+                    <div class="user-filter-title">📂 Kategori</div>
+                    <div class="user-filter-list" id="kategoriList">
+                        <div class="user-loader" style="padding:12px 0"><div class="user-spinner"></div></div>
+                    </div>
+
+                    <div class="user-filter-group">
+                        <div class="user-filter-title">💰 Rentang Harga</div>
+                        <div class="user-price-inputs">
+                            <input type="number" id="minHarga" placeholder="Minimum" min="0" step="1000">
+                            <input type="number" id="maxHarga" placeholder="Maksimum" min="0" step="1000">
+                        </div>
+                        <button type="button" class="user-btn user-btn-outline user-btn-block" id="applyHarga" style="margin-top:10px;padding:8px">Terapkan Harga</button>
+                    </div>
+
+                    <div class="user-filter-group">
+                        <button type="button" class="user-btn user-btn-ghost user-btn-block" id="resetFilter">↺ Reset Filter</button>
+                    </div>
+                </aside>
+
+                <section>
+                    <div class="user-result-head">
+                        <div class="user-result-count" id="bootcampTotalLabel">Memuat data...</div>
+                    </div>
+                    <div class="user-bootcamp-grid" id="bootcampGrid">
+                        <div class="user-loader"><div class="user-spinner"></div>Memuat bootcamp...</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer class="user-footer">
+        <div class="user-container">
+            <div class="user-footer-grid">
+                <div>
+                    <span class="user-brand"><span class="user-brand-badge">🎓</span> BelajarYuk</span>
+                    <p>Platform pembelajaran digital untuk mengembangkan skill yang dibutuhkan industri modern.</p>
+                </div>
+                <div>
+                    <h5>Menu</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="elearning.html">E-Learning</a></li>
+                        <li><a href="bootcamp.html">Bootcamp</a></li>
+                        <li><a href="komunitas.html">Komunitas</a></li>
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Akun</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="../proses/masuk.php">Login</a></li>
+                        <li><a href="../proses/daftar.php">Daftar</a></li>
+                        <li><a href="kelas.html">Kelas Saya</a></li>
+                        <li><a href="riwayat.html">Riwayat Transaksi</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5>Dukungan</h5>
+                    <ul class="user-footer-links">
+                        <li><a href="index.html#tentang">Tentang Kami</a></li>
+                        <li><a href="index.html#keunggulan">Kenapa BelajarYuk</a></li>
+                        <li><a href="index.html#statistik">Statistik</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="user-footer-bottom">
+                <span>© 2026 BelajarYuk. Semua hak dilindungi.</span>
+                <span>Dibuat untuk pembelajaran digital Indonesia.</span>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script src="../js/image_helper.js"></script>
+<script src="../js/user-app.js"></script>
+<script src="../js/cards.js"></script>
+<script src="../js/bootcamp_user.js"></script>
+</body>
+</html>
