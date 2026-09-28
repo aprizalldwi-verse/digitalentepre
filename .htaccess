@@ -1,0 +1,47 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # --- JANGAN ubah file/folder yang sudah ada ---
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # --- Akar project: redirect ke pages/index.html ---
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^(.*)$ pages/index.html [L]
+
+    # --- pages/ : rewrite URL tanpa .html ---
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([a-zA-Z0-9_-]+)/?$ pages/$1.html [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?$ pages/$2.html [L]
+
+    # --- admin/ : redirect ke admin/index.php ---
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^admin/?$ admin/index.php [L]
+
+    # --- proses/ API endpoints ---
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^proses/?$ proses/ [L]
+
+    # --- Assets ---
+    RewriteRule ^css/(.*)$ css/$1 [L]
+    RewriteRule ^js/(.*)$ js/$1 [L]
+    RewriteRule ^assets/(.*)$ assets/$1 [L]
+    RewriteRule ^course/(.*)$ course/$1 [L]
+    RewriteRule ^admin-php/(.*)$ admin-php/$1 [L]
+
+    # --- Default fallback ke pages/index.html ---
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ pages/index.html [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+    ErrorDocument 404 /pages/index.html
+</IfModule>

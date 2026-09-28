@@ -2,11 +2,29 @@
 
 /*
 |--------------------------------------------------------------------------
-| MIDTRANS SANDBOX KEYS
+   LOAD .env FILE (if exists) — tanpa dependency luar
 |--------------------------------------------------------------------------
-| Key TIDAK disimpan di repository (dicegah oleh GitHub Push Protection).
-|
-| Sumber key, urutan prioritas:
+*/
+$envFile = __DIR__ . '/../.env';
+if (is_file($envFile)) {
+    $envLines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($envLines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (strpos($line, '=') === false) continue;
+        [$key, $val] = explode('=', $line, 2);
+        $key = trim($key);
+        $val = trim($val);
+        if (!getenv($key)) {
+            putenv("$key=$val");
+        }
+    }
+}
+
+/*
+|--------------------------------------------------------------------------
+| MIDTRANS KEYS
+|--------------------------------------------------------------------------
+| Key sumber prioritas:
 |   1. Environment variable : MIDTRANS_SERVER_KEY / MIDTRANS_CLIENT_KEY
 |   2. File lokal           : proses/midtrans_keys.php  (tidak ikut di-commit)
 |

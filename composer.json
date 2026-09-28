@@ -1,0 +1,8 @@
+{
+    "name": "belajar-yuk/platform",
+    "description": "Platform E-Learning BelajarYuk",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    }
+}

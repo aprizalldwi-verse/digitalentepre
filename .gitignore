@@ -22,6 +22,7 @@ npm-debug.log*
 proses/midtrans_keys.php
 .env
 .env.*
+!.env.example
 
 # --- File uji / artefak sementara ---
 _test.php
